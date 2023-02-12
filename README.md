@@ -12,9 +12,9 @@
 
 #### Cameron Courtois  |  UI/Logo Designer | <a href="https://github.com/CamCourtois">Github</a>
 
-#### Kyle McCraine  |  Co-Lead Backend Database Developer | <a href="https://github.com/Kmamc012">Github</a>
+#### Kyle McCraine  |  Co-Lead Backend Database Developer | <a href="https://github.com/Kcmac012">Github</a>
 
-##### Dustin Wleczyk  |  Co-Lead Backend Database Developer | <a href="https://github.com/dustinwleczyk">Github</a>
+#### Dustin Wleczyk  |  Co-Lead Backend Database Developer | <a href="https://github.com/Dustin-Wleczyk">Github</a>
 
 #### Michael Carroll  |  Backend Database Developer | <a href="https://github.com/mikechi702">Github</a>
 
