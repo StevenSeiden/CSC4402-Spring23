@@ -1,30 +1,21 @@
 # CSC4402-Spring23
-Lilly Moreau
-GitHub: lmoreau21
 
-Maggie Stewart
-Github: maggiestewart
+#### Maggie Stewart  |  Team Lead • Web Developer | <a href="https://github.com/maggiestewart">Github</a>
 
-Steven Seiden
-Github: stevenseiden
+#### Steven Seiden  |  Lead Web Developer | <a href="https://github.com/stevenseiden">Github</a>
 
-Olivia Cheung 
-Github: Olivia-Cheung
+#### Lilly Moreau  |  Head of User Experience • Web Developer | <a href="https://github.com/lmoreau21">Github</a>
 
-Cameron Courtois
-GitHub: CamCourtois
+#### Jack Maumus  |  Head of Documentation • UI Designer | <a href="https://github.com/Jack-Maumus">Github</a>
 
-Jack Maumus
-GitHub: Jack-Maumus
+#### Olivia Cheung  |  UI Designer | <a href="https://github.com/Olivia-Cheung">Github</a>
 
-Dustin Wleczyk
-Github: dustinwleczyk
+#### Cameron Courtois  |  UI/Logo Designer | <a href="https://github.com/CamCourtois">Github</a>
 
-Michael Carroll
-Github: mikechi702
+#### Kyle McCraine  |  Co-Lead Backend Database Developer | <a href="https://github.com/Kmamc012">Github</a>
 
-Josh McCain 
-Github: Joshua-McCain
+##### Dustin Wleczyk  |  Co-Lead Backend Database Developer | <a href="https://github.com/dustinwleczyk">Github</a>
 
-Kyle McCraine
-GitHub: Kcmac012
+#### Michael Carroll  |  Backend Database Developer | <a href="https://github.com/mikechi702">Github</a>
+
+#### Josh McCain  |  Backend Database Developer | <a href="https://github.com/Joshua-McCain">Github</a>
