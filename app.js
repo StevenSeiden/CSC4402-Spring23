@@ -16,7 +16,7 @@ var con = mysql.createConnection({
 con.connect(function(err) {
     if(err) throw err;
     console.log("Connected!");
-    con.query("select * from meals;", function (err, result, fields) {
+    con.query("select * from meals where title like '%chicken%';", function (err, result, fields) {
       if (err) throw err;
       console.log(result);
     });

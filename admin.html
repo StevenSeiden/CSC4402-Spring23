@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="admin">
+      <div class="admin-child"></div>
+      <div class="admin-password-wrapper">
+        <input class="admin-password" type="password" />
+      </div>
+      <button class="component-1-6" id="popupcomponent16">
+        <div class="component-4-1"><div class="component-4-1-child"></div></div>
+        <b class="login">Login</b>
+      </button>
+    </div>
+
+    <script>
+      var popupcomponent16 = document.getElementById("popupcomponent16");
+      if (popupcomponent16) {
+        popupcomponent16.addEventListener("click", function (e) {
+          window.location.href = "./restock-page.html";
+        });
+      }
+      </script>
+  </body>
+</html>
