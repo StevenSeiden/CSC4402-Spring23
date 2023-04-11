@@ -82,6 +82,11 @@
 
 /*** Navbar ***/
 
+#navbarCollapse a{
+    padding: 20px;
+    font-size: 20px;
+}
+
 .navbar-dark .navbar-nav .nav-link {
     position: relative;
     margin-left: 25px;
