@@ -153,7 +153,11 @@
         background: var(--dark) !important;
     }
 }
-
+/*** About Section ***/
+h1 img {
+    height: 30px;
+    width: 30px;
+}
 
 /*** Hero Header ***/
 .hero-header {
