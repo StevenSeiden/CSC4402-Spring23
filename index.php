@@ -286,49 +286,33 @@
 
       <!-- About End -->
       <div>
-        
       <?php
-      echo("test");
-        $mysqli = new mysqli("bitesabroad.mysql.database.azure.com","bitesabroad","Databased1","bitesabroad");
-        // Check connection
-        if ($mysqli->connect_error) {
-            die('Connect Error (' .
-            $mysqli->connect_errno . ') '.
-            $mysqli->connect_error);
-        }
-        
+      // Create a PDO object
+      $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
 
-        $sql = " SELECT * FROM meals ";
-        $result = $mysqli->query($sql);
-        $mysqli->close();
+      // Run a query against the database
+      $query = "SELECT * FROM meals";
+      $result = $pdo->query($query);
+
+      // Fetch each row of data from the query result
+      while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+          // Create a Bootstrap HTML table row
+          echo "<tr>";
+
+          // Append each column of data to the table row
+          foreach ($row as $key => $value) {
+              echo "<td>$value</td>";
+          }
+
+          // Close the table row
+          echo "</tr>";
+      }
+
+      // Close the PDO connection
+      $pdo = null;
       ?>
-        </div>
 
-    <section>
-        <h1>Please work</h1>
-        <!-- TABLE CONSTRUCTION -->
-        <table>
-            <tr>
-                <th>title</th>
-                <th>description</th>
-            </tr>
-            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
-            <?php
-                // LOOP TILL END OF DATA
-                while($rows=$result->fetch_assoc())
-                {
-            ?>
-            <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
-                <td><?php echo $rows['title'];?></td>
-                <td><?php echo $rows['description'];?></td>
-       
-            </tr>
-            <?php } ?>
-            
-        </table>
-    </section>
 
       <!-- Menu Start -->
       <!--Modify this section to use iteration and db info-->
