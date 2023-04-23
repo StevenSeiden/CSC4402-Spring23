@@ -285,6 +285,49 @@
       </div>
 
       <!-- About End -->
+      <div>
+      <?php
+        $mysqli = new mysqli("bitesabroad.mysql.database.azure.com","bitesabroad","Databased1","bitesabroad");
+        // Check connection
+        if ($mysqli->connect_error) {
+            die('Connect Error (' .
+            $mysqli->connect_errno . ') '.
+            $mysqli->connect_error);
+        }
+        
+
+        $sql = " SELECT * FROM meals ";
+        $result = $mysqli->query($sql);
+        $mysqli->close();
+      ?>
+        </div>
+
+    <section>
+        <h1>Please work</h1>
+        <!-- TABLE CONSTRUCTION -->
+        <table>
+            <tr>
+                <th>title</th>
+                <th>description</th>
+                <th>price</th>
+            </tr>
+            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+            <?php
+                // LOOP TILL END OF DATA
+                while($rows=$result->fetch_assoc())
+                {
+            ?>
+            <tr>
+                <!-- FETCHING DATA FROM EACH
+                    ROW OF EVERY COLUMN -->
+                <td><?php echo $rows['title'];?></td>
+                <td><?php echo $rows['description'];?></td>
+       
+            </tr>
+            <?php } ?>
+            
+        </table>
+    </section>
 
       <!-- Menu Start -->
       <!--Modify this section to use iteration and db info-->
