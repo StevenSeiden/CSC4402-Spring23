@@ -286,7 +286,9 @@
 
       <!-- About End -->
       <div>
+        
       <?php
+      echo("test");
         $mysqli = new mysqli("bitesabroad.mysql.database.azure.com","bitesabroad","Databased1","bitesabroad");
         // Check connection
         if ($mysqli->connect_error) {

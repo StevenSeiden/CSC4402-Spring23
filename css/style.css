@@ -23,6 +23,31 @@
     bottom: 45px;
     z-index: 99;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  th {
+    background-color: #436e7d;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-bottom: 2px solid #436e7d;
+  }
+  ttd {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #436e7d;
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+  
+  td {
+    color: #333333;
+  }
 
 
 /*** Spinner ***/
