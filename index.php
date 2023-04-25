@@ -315,7 +315,7 @@
             <div class=\"d-flex align-items-center\">
               <img
                 class=\"flex-shrink-0 img-fluid rounded\"
-                src=\"img/{$row['title']}.jpg\"
+                src=\"img/mealsFromDB/{$row['title']}.jpg\"
                 alt=\"\"
                 style=\"width: 80px\"
               />
