@@ -286,7 +286,7 @@
 
       <!-- About End -->
       
-      <div class="container-xxl py-5" id="menu"">
+      <div class="container-xxl py-5" id="menu">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
@@ -297,7 +297,10 @@
             <h1 class="mb-5">All Menu Items</h1>
           </div>
           
-          <select id="cuisine">
+          <form method="get" >
+          <label for="cuisineType">Cuisine: </label>
+          <select id="cuisineType" name="cuisineType">
+            <option value="All" selected>All</option>
             <option value="American">American</option>
             <option value="Asian">Asian</option>
             <option value="Caribbean">Caribbean</option>
@@ -334,60 +337,56 @@
             <option value="Irish">Irish</option>
             <option value="Scottish">Scottish</option>
             <option value="English">English</option>
-            <option value="All">All</option>
-          </select>
-          <?php
+            </select>
+            <button type="submit" href="#menu">Filter</button>
+          </form>
+      
+        <?php
           // Create a PDO object
+         // echo( document.querySelector('#cuisineType'));
+          $cuisine = '';
           $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
-
-          // Get the selected cuisine from the HTML form
-          $cuisine = $_GET['cuisine'];
-
+          $cuisine = $_GET["cuisineType"];
+          
           // If no cuisine is selected, show all meals
-          if ($cuisine == '') {
+          if ($cuisine == 'All'||$cuisine == '') {
             $query = "SELECT * FROM meals";
           } else {
             // Otherwise, show only meals of the selected cuisine
-            $query = "SELECT * FROM meals WHERE cuisine = :cuisine";
+            $query = "SELECT * FROM meals WHERE cuisine like \"$cuisine\"";
           }
+          // Run a query against the database
+          $result = $pdo->query($query);
+          echo "<div class=\"tab-content\">
+          <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
+            <div class=\"row g-4\">";
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-          // Run the query against the database
-          $result = $pdo->query($query, [':cuisine' => $cuisine]);
-
-          // Check if the query was successful
-          if ($result) {
-            // If yes, loop through the results and display them
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-              echo "
-                <div class=\"col-lg-6\">
-                  <div class=\"d-flex align-items-center\">
-                    <img
-                      class=\"flex-shrink-0 img-fluid rounded\"
-                      src=\"img/mealsFromDB/{$row['title']}.jpg\"
-                      alt=\"\"
-                      style=\"width: 80px\"
-                    />
-                    <div class=\"w-100 d-flex flex-column text-start ps-4\">
-                      <h5
-                        class=\"d-flex justify-content-between border-bottom pb-2\"
-                      >
-                        <span>{$row['title']}</span>
-                        <span class=\"text-primary\">${$row['price']}</span>
-                      </h5>
-                      <small class=\"fst-italic\">{$row['description']}</small>
-                      <small class=\"fst-italic\">{$row['cuisine']}:{$row['dietary']}:{$row['quantity']}</small>
-                    </div>
-                  </div>
-                </div>";
-            }
-          } else {
-            // If no results were found, display an error message
-            echo "No results found.";
+            echo "
+            <div class=\"col-lg-6\">
+            <div class=\"d-flex align-items-center\">
+              <img
+                class=\"flex-shrink-0 img-fluid rounded\"
+                src=\"img/mealsFromDB/{$row['title']}.jpg\"
+                alt=\"\"
+                style=\"width: 80px\"
+              />
+              <div class=\"w-100 d-flex flex-column text-start ps-4\">
+                <h5
+                  class=\"d-flex justify-content-between border-bottom pb-2\"
+                >
+                  <span>{$row['title']}</span>
+                  <span class=\"text-primary\">\${$row['price']}</span>
+                </h5>
+                <small class=\"fst-italic\">{$row['description']}</small>
+                <small>{$row['cuisine']} : {$row['dietary']} : {$row['quantity']}</small>
+              </div>
+            </div>
+          </div>";
           }
 
           // Close the PDO connection
           $pdo = null;
-
           ?>
         </div>
       </div>
