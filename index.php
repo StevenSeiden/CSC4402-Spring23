@@ -298,48 +298,96 @@
           </div>
           
           <select id="cuisine">
-            <option value="all">All</option>
-            <option value="Italian">Italian</option>
-            <option value="Mexican">Mexican</option>
+            <option value="American">American</option>
+            <option value="Asian">Asian</option>
+            <option value="Caribbean">Caribbean</option>
             <option value="Chinese">Chinese</option>
+            <option value="French">French</option>
+            <option value="Greek">Greek</option>
+            <option value="Indian">Indian</option>
+            <option value="Italian">Italian</option>
             <option value="Japanese">Japanese</option>
+            <option value="Korean">Korean</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Middle Eastern">Middle Eastern</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Thai">Thai</option>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="African">African</option>
+            <option value="German">German</option>
+            <option value="Brazilian">Brazilian</option>
+            <option value="Peruvian">Peruvian</option>
+            <option value="Argentinian">Argentinian</option>
+            <option value="Turkish">Turkish</option>
+            <option value="Russian">Russian</option>
+            <option value="Indonesian">Indonesian</option>
+            <option value="Filipino">Filipino</option>
+            <option value="Polish">Polish</option>
+            <option value="Moroccan">Moroccan</option>
+            <option value="Israeli">Israeli</option>
+            <option value="Portuguese">Portuguese</option>
+            <option value="Swedish">Swedish</option>
+            <option value="Danish">Danish</option>
+            <option value="Norwegian">Norwegian</option>
+            <option value="Finnish">Finnish</option>
+            <option value="Irish">Irish</option>
+            <option value="Scottish">Scottish</option>
+            <option value="English">English</option>
+            <option value="All">All</option>
           </select>
           <?php
           // Create a PDO object
           $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
 
-          // Run a query against the database
-          $query = "SELECT * FROM meals";
-          $result = $pdo->query($query);
-          echo "<div class=\"tab-content\">
-          <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
-            <div class=\"row g-4\">";
-          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          // Get the selected cuisine from the HTML form
+          $cuisine = $_GET['cuisine'];
 
-            echo "
-            <div class=\"col-lg-6\">
-            <div class=\"d-flex align-items-center\">
-              <img
-                class=\"flex-shrink-0 img-fluid rounded\"
-                src=\"img/mealsFromDB/{$row['title']}.jpg\"
-                alt=\"\"
-                style=\"width: 80px\"
-              />
-              <div class=\"w-100 d-flex flex-column text-start ps-4\">
-                <h5
-                  class=\"d-flex justify-content-between border-bottom pb-2\"
-                >
-                  <span>{$row['title']}</span>
-                  <span class=\"text-primary\">{$row['price']}</span>
-                </h5>
-                <small class=\"fst-italic\">{$row['description']}</small>
-              </div>
-            </div>
-          </div>";
+          // If no cuisine is selected, show all meals
+          if ($cuisine == '') {
+            $query = "SELECT * FROM meals";
+          } else {
+            // Otherwise, show only meals of the selected cuisine
+            $query = "SELECT * FROM meals WHERE cuisine = :cuisine";
+          }
+
+          // Run the query against the database
+          $result = $pdo->query($query, [':cuisine' => $cuisine]);
+
+          // Check if the query was successful
+          if ($result) {
+            // If yes, loop through the results and display them
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+              echo "
+                <div class=\"col-lg-6\">
+                  <div class=\"d-flex align-items-center\">
+                    <img
+                      class=\"flex-shrink-0 img-fluid rounded\"
+                      src=\"img/mealsFromDB/{$row['title']}.jpg\"
+                      alt=\"\"
+                      style=\"width: 80px\"
+                    />
+                    <div class=\"w-100 d-flex flex-column text-start ps-4\">
+                      <h5
+                        class=\"d-flex justify-content-between border-bottom pb-2\"
+                      >
+                        <span>{$row['title']}</span>
+                        <span class=\"text-primary\">${$row['price']}</span>
+                      </h5>
+                      <small class=\"fst-italic\">{$row['description']}</small>
+                      <small class=\"fst-italic\">{$row['cuisine']}:{$row['dietary']}:{$row['quantity']}</small>
+                    </div>
+                  </div>
+                </div>";
+            }
+          } else {
+            // If no results were found, display an error message
+            echo "No results found.";
           }
 
           // Close the PDO connection
           $pdo = null;
+
           ?>
         </div>
       </div>
