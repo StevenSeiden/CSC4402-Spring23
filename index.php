@@ -297,7 +297,13 @@
             <h1 class="mb-5">All Menu Items</h1>
           </div>
           
-
+          <select id="cuisine">
+            <option value="all">All</option>
+            <option value="Italian">Italian</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Japanese">Japanese</option>
+          </select>
           <?php
           // Create a PDO object
           $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
