@@ -65,11 +65,11 @@
         <nav
           class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
         >
-          <a href="" class="navbar-brand p-0">
+        <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
             </h1>
-          </a>
+          </a>';?>
           <button
             class="navbar-toggler"
             type="button"
@@ -82,7 +82,8 @@
             <div class="navbar-nav ms-auto py-0 pe-4">
               <a href="#home" class="nav-item nav-link">Home</a>
               <a href="#about" class="nav-item nav-link">About</a>
-              <a href="#menu" class="nav-item nav-link">Menu</a>
+              <?php echo '<a href="menu.php" class="nav-item nav-link">Menu</a>';?>
+              <!-- <a href="#menu" >Menu</a> -->
               <a href="#team" class="nav-item nav-link">Our Team</a>
             </div>
           </div>
@@ -285,113 +286,25 @@
       </div>
 
       <!-- About End -->
-      
-      <div class="container-xxl py-5" id="menu">
-        <div class="container">
-          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h5
+      <!-- Menu -->
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+      <?php echo '<a href="menu.php"><h5
               class="section-title ff-secondary text-center text-primary fw-normal"
             >
               Food Menu
             </h5>
             <h1 class="mb-5">All Menu Items</h1>
+         </a>';?>
+            <!-- <h5
+              class="section-title ff-secondary text-center text-primary fw-normal"
+            >
+              Food Menu
+            </h5>
+            <h1 class="mb-5">All Menu Items</h1> -->
+<!--          
+          <button>View Menu</button> -->
+        
           </div>
-          
-          <form method="get" >
-          <label for="cuisineType">Cuisine: </label>
-          <select id="cuisineType" name="cuisineType">
-            <option value="All" selected>All</option>
-            <option value="American">American</option>
-            <option value="Asian">Asian</option>
-            <option value="Caribbean">Caribbean</option>
-            <option value="Chinese">Chinese</option>
-            <option value="French">French</option>
-            <option value="Greek">Greek</option>
-            <option value="Indian">Indian</option>
-            <option value="Italian">Italian</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Korean">Korean</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Middle Eastern">Middle Eastern</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Thai">Thai</option>
-            <option value="Vietnamese">Vietnamese</option>
-            <option value="Mediterranean">Mediterranean</option>
-            <option value="African">African</option>
-            <option value="German">German</option>
-            <option value="Brazilian">Brazilian</option>
-            <option value="Peruvian">Peruvian</option>
-            <option value="Argentinian">Argentinian</option>
-            <option value="Turkish">Turkish</option>
-            <option value="Russian">Russian</option>
-            <option value="Indonesian">Indonesian</option>
-            <option value="Filipino">Filipino</option>
-            <option value="Polish">Polish</option>
-            <option value="Moroccan">Moroccan</option>
-            <option value="Israeli">Israeli</option>
-            <option value="Portuguese">Portuguese</option>
-            <option value="Swedish">Swedish</option>
-            <option value="Danish">Danish</option>
-            <option value="Norwegian">Norwegian</option>
-            <option value="Finnish">Finnish</option>
-            <option value="Irish">Irish</option>
-            <option value="Scottish">Scottish</option>
-            <option value="English">English</option>
-            </select>
-            <button type="submit" href="#menu">Filter</button>
-          </form>
-      
-        <?php
-          // Create a PDO object
-         // echo( document.querySelector('#cuisineType'));
-          $cuisine = '';
-          $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
-          $cuisine = $_GET["cuisineType"];
-          
-          // If no cuisine is selected, show all meals
-          if ($cuisine == 'All'||$cuisine == '') {
-            $query = "SELECT * FROM meals";
-          } else {
-            // Otherwise, show only meals of the selected cuisine
-            $query = "SELECT * FROM meals WHERE cuisine like \"$cuisine\"";
-          }
-          // Run a query against the database
-          $result = $pdo->query($query);
-          echo "<div class=\"tab-content\">
-          <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
-            <div class=\"row g-4\">";
-          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
-            echo "
-            <div class=\"col-lg-6\">
-            <div class=\"d-flex align-items-center\">
-              <img
-                class=\"flex-shrink-0 img-fluid rounded\"
-                src=\"img/mealsFromDB/{$row['title']}.jpg\"
-                alt=\"\"
-                style=\"width: 80px\"
-              />
-              <div class=\"w-100 d-flex flex-column text-start ps-4\">
-                <h5
-                  class=\"d-flex justify-content-between border-bottom pb-2\"
-                >
-                  <span>{$row['title']}</span>
-                  <span class=\"text-primary\">\${$row['price']}</span>
-                </h5>
-                <small class=\"fst-italic\">{$row['description']}</small>
-                <small>{$row['cuisine']} : {$row['dietary']} : {$row['quantity']}</small>
-              </div>
-            </div>
-          </div>";
-          }
-
-          // Close the PDO connection
-          $pdo = null;
-          ?>
-        </div>
-      </div>
-
-      <br>
       <!-- Team Start -->
       <div class="container-xxl pt-5 pb-3" id="team" >
         <div class="container">
