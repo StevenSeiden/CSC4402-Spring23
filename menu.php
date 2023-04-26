@@ -144,7 +144,8 @@
             </select>
             <button type="submit" href="#menu">Filter</button>
           </form>
-      
+        <br>
+
         <?php
           // Create a PDO object
          // echo( document.querySelector('#cuisineType'));
@@ -159,7 +160,7 @@
             $query = "SELECT * FROM main";
           } else {
             // Otherwise, show only meals of the selected cuisine
-            $query = "SELECT * FROM meals WHERE cuisine like \"$cuisine\"";
+            $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
           }
           // Run a query against the database
           $result = $pdo->query($query);
@@ -189,15 +190,17 @@
                   <span class=\"text-primary\">\${$row['price']}</span>
                 </h5>
                 <small class=\"fst-italic\">{$row['description']}</small>
-                <small>{$row['cuisine']} : {$row['dietary']} : {$row['stock']}</small>
-                <button href=''>Add to cart</button>
+                <small>Cuisine: {$row['cuisine']}  Diet: {$row['dietary']}\t Quantity: {$row['stock']}</small>
+
+                <button class=\"btn btn btn-primary mx-1\" style=\"width:150px; top:4px;\" href=''>Add to cart</button>
               </div>
+                
+              
             </div>
           </div>";
           }}
-
-          // Close the PDO connection
-          $pdo = null;
+           $pdo = null;
+          // Close the PDO connection  
           ?>
         </div>
       </div>
