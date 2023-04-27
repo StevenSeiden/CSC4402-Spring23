@@ -149,24 +149,76 @@
             </select>
             <button type="submit" href="#menu">Filter</button>
           </form>
+
+          <form method="get" >
+          <label for="dietaryType">Diet: </label>
+          <select id="dietaryType" name="dietaryType">
+            <option value="All">All</option>
+            <option value="Pescetarian">Pescetarian</option>
+            <option value="Dairy Free">Dairy Free</option>
+            <option value="Keto">Keto</option>
+            <option value="Paleo">Paleo</option>
+            <option value="Gluten free">Gluten free</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Kosher">Kosher</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Hala">Hala</option>
+            
+            </select>
+            <button type="submit" href="#menu">Filter</button>
+          </form>
+
         <br>
 
         <?php
           // Create a PDO object
          // echo( document.querySelector('#cuisineType'));
           $cuisine = '';
+          $diet = '';
           $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
-          if (isset($_GET["cuisineType"])) {
+          if (isset($_GET["cuisineType"])) { //getting dropdown input for cuisine type
             $cuisine = $_GET["cuisineType"];
           }
-          
-          // If no cuisine is selected, show all meals
-          if ($cuisine == 'All'||$cuisine == '') {
-            $query = "SELECT * FROM main";
-          } else {
-            // Otherwise, show only meals of the selected cuisine
-            $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
+          else if (isset($_GET["dietaryType"])) { //getting diet type input for cuisine type
+            $diet = $_GET["dietaryType"];
           }
+          
+          // If no cuisine is selected, show all meals, or show only other dropdown queries.
+          
+            // if ($cuisine == 'All'||$cuisine == '') {
+            //   $query = "SELECT * FROM main";
+            // } else {
+            //   // Otherwise, show only meals of the selected cuisine
+            //   $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
+            // }
+
+            // if ($diet == 'All'||$diet == '') {
+            //   $query = "SELECT * FROM main";
+            // } else {
+            //   // Otherwise, show only meals of the selected cuisine
+            //   $query = "SELECT * FROM main WHERE dietary like \"$diet\"";
+            // }
+
+            if($cuisine == 'All' || $cuisine == '') //spaghetti ahh and unreadable if else chain will optimize later -- Mike
+            {
+              if($diet == 'All' || $diet == '') //if both diet and cuisine are null or 'All'
+                $query = "SELECT * FROM main";
+              else //if diet is anything other than null or all
+              {
+                $query = "SELECT * FROM main WHERE dietary like \"$diet\"";
+              }
+            }
+            else //cuisine filter not empty
+            {
+              if($diet == 'All' || $diet == '') //if diet is null or 'All'
+                $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
+              else //both diet and cuisine are not null in dropdown
+              {
+                $query = "SELECT * FROM main WHERE dietary like \"$diet\" AND cuisine like \"$cuisine\"";
+              }
+            }
+
           // Run a query against the database
           $result = $pdo->query($query);
           echo "<div class=\"tab-content\">
