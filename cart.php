@@ -47,7 +47,7 @@
   <body>
     <div class="container-xxl bg-white p-0">
       <!-- Spinner Start -->
-      <!-- <div
+      <div
         id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
       >
@@ -58,7 +58,7 @@
         >
           <span class="sr-only">Loading...</span>
         </div>
-      </div> -->
+      </div>
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
@@ -84,9 +84,8 @@
             <div class="navbar-nav ms-auto py-0 pe-4">
             <?php echo '<a href="index.php#home" class="nav-item nav-link">Home</a>';?>
             <?php echo '<a href="index.php#about" class="nav-item nav-link">About Us</a>';?>
-              <a href="#menu" class="nav-item nav-link">Menu</a>
-              <?php echo '<a href="cart.php" class="nav-item nav-link">Cart</a>';?>
-            
+            <?php echo '<a href="menu.php#about" class="nav-item nav-link">Menu</a>';?>
+             
               <?php echo '<a href="index.php#team" class="nav-item nav-link">Our Team</a>';?>
             </div>
           </div>
@@ -101,55 +100,12 @@
             <h5
               class="section-title ff-secondary text-center text-primary fw-normal"
             >
-              Food Menu
+              Cart
             </h5>
-            <h1 class="mb-5">All Menu Items</h1>
+            <h1 class="mb-5">All Items</h1>
           </div>
           
-          <form method="get" >
-          <label for="cuisineType">Cuisine: </label>
-          <select id="cuisineType" name="cuisineType">
-            <option value="All">All</option>
-            <option value="American">American</option>
-            <option value="Asian">Asian</option>
-            <option value="Caribbean">Caribbean</option>
-            <option value="Chinese">Chinese</option>
-            <option value="French">French</option>
-            <option value="Greek">Greek</option>
-            <option value="Indian">Indian</option>
-            <option value="Italian">Italian</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Korean">Korean</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Middle Eastern">Middle Eastern</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Thai">Thai</option>
-            <option value="Vietnamese">Vietnamese</option>
-            <option value="Mediterranean">Mediterranean</option>
-            <option value="African">African</option>
-            <option value="German">German</option>
-            <option value="Brazilian">Brazilian</option>
-            <option value="Peruvian">Peruvian</option>
-            <option value="Argentinian">Argentinian</option>
-            <option value="Turkish">Turkish</option>
-            <option value="Russian">Russian</option>
-            <option value="Indonesian">Indonesian</option>
-            <option value="Filipino">Filipino</option>
-            <option value="Polish">Polish</option>
-            <option value="Moroccan">Moroccan</option>
-            <option value="Israeli">Israeli</option>
-            <option value="Portuguese">Portuguese</option>
-            <option value="Swedish">Swedish</option>
-            <option value="Danish">Danish</option>
-            <option value="Norwegian">Norwegian</option>
-            <option value="Finnish">Finnish</option>
-            <option value="Irish">Irish</option>
-            <option value="Scottish">Scottish</option>
-            <option value="English">English</option>
-            </select>
-            <button type="submit" href="#menu">Filter</button>
-          </form>
-        <br>
+
 
         <?php
           // Create a PDO object
@@ -161,12 +117,8 @@
           }
           
           // If no cuisine is selected, show all meals
-          if ($cuisine == 'All'||$cuisine == '') {
-            $query = "SELECT * FROM main";
-          } else {
-            // Otherwise, show only meals of the selected cuisine
-            $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
-          }
+          $query = "SELECT * FROM cart_view where user_ID=501";
+         
           // Run a query against the database
           $result = $pdo->query($query);
           echo "<div class=\"tab-content\">
@@ -176,46 +128,39 @@
             
             echo "<br><h1>No results found</h1>";
             } else {
+          echo "<table class=\"table\">
+          <tr>
+          <thead style=\"background-color:#436e7d\">
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            </thead>
+          </tr>";
           while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
+           
             echo "
-            <div class=\"col-lg-6\">
-            <div class=\"d-flex align-items-center\">
-              <img
-                class=\"flex-shrink-0 img-fluid rounded\"
-                src=\"img/mealsFromDB/{$row['title']}.jpg\"
-                alt=\"\"
-                style=\"width: 80px\"
-              />
-              <div class=\"w-100 d-flex flex-column text-start ps-4\">
-                <h5
-                  class=\"d-flex justify-content-between border-bottom pb-2\"
-                >
-                  <span>{$row['title']}</span>
-                  <span class=\"text-primary\">\${$row['price']}</span>
-                </h5>
-                <small class=\"fst-italic\">{$row['description']}</small>
-                <small>Cuisine: {$row['cuisine']}  Diet: {$row['dietary']}\t Quantity: {$row['stock']}</small>
-                ";
-            if($row['stock']>0){
-              echo "<form method=\"post\"><button value=\"{$row['title']}\" name=\"stockButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" href=''>Add to cart</button></form>";
-            }else{
-              echo "<div class=\"alert alert-warning\">
-              <strong>Out of Stock</strong>
-            </div>";
+            <tr>
+             <td>{$row['title']}</td>
+              <td>{$row['description']}</td>
+              <td>\${$row['price']}</td>
+              <td>{$row['quantity']}</td>
+              <td>\${$row['total_price']}</td>
+            </tr>  
+              ";
+          
+            
             }
+           
             echo "
-              </div>
+            </table>
+             
             </div>
           </div>";
 
-          }}
-          if(isset($_POST['stockButton'])) {  
-            
-            $value = $_POST['stockButton'];
-            $stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
-            //$stockUp;
           }
+         
            $pdo = null;
           // Close the PDO connection  
           ?>
