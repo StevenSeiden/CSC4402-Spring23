@@ -39,6 +39,8 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
@@ -62,10 +64,12 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-      <div class="container-xxl position-relative p-0">
+
+      <div class="container-xxl position-relative p-0  background-color:#0F172B">
         <nav
-          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
+          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 background-color:#0F172B"
         >
+       
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -92,9 +96,10 @@
           </div>
         </nav>
       </div>
+
+
 <br>
-<br>
-<br>
+
 <div class="container-xxl py-5" id="menu">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -168,9 +173,7 @@
             </select>
             <button type="submit" href="#menu">Filter</button>
           </form>
-
         <br>
-
         <?php
           // Create a PDO object
          // echo( document.querySelector('#cuisineType'));
@@ -192,14 +195,12 @@
             //   // Otherwise, show only meals of the selected cuisine
             //   $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
             // }
-
             // if ($diet == 'All'||$diet == '') {
             //   $query = "SELECT * FROM main";
             // } else {
             //   // Otherwise, show only meals of the selected cuisine
             //   $query = "SELECT * FROM main WHERE dietary like \"$diet\"";
             // }
-
             if($cuisine == 'All' || $cuisine == '') //spaghetti ahh and unreadable if else chain will optimize later -- Mike
             {
               if($diet == 'All' || $diet == '') //if both diet and cuisine are null or 'All'
@@ -218,7 +219,6 @@
                 $query = "SELECT * FROM main WHERE dietary like \"$diet\" AND cuisine like \"$cuisine\"";
               }
             }
-
           // Run a query against the database
           $result = $pdo->query($query);
           echo "<div class=\"tab-content\">
@@ -262,11 +262,31 @@
           </div>";
 
           }}
+          
           if(isset($_POST['stockButton'])) {  
             
             $value = $_POST['stockButton'];
-            $stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
-            //$stockUp;
+            $temp = $pdo->query("Select Distinct meal_ID FROM items WHERE title like \"$value\"");
+            $value2 = $temp->fetch(PDO::FETCH_ASSOC);
+            //echo($value2['meal_ID']);
+            $temp2 = $pdo->query("Select * FROM cart WHERE meal_ID = {$value2['meal_ID']}");
+            
+            $quanRowTemp = $pdo->query("SELECT quantity FROM cart_view where title like \"$value\"");
+            $quanRow = $quanRowTemp->fetch(PDO::FETCH_ASSOC);
+
+            $stockRowTemp = $pdo->query("SELECT stock FROM main where title like \"$value\"");
+            $stockRow = $stockRowTemp->fetch(PDO::FETCH_ASSOC);
+            if($temp2->rowCount() == 0){
+              $query2 = $pdo->query("insert into cart values(501, {$value2['meal_ID']}, 1)");
+             
+            }
+            else if($quanRow['quantity']<$stockRow['stock']){
+              $query2 = $pdo->query("update cart set quantity = quantity+1 where meal_ID ={$value2['meal_ID']}");
+             
+            }else{
+              echo("Unable to Add $value to Cart due to lack of stock");
+      
+            }
           }
            $pdo = null;
           // Close the PDO connection  

@@ -47,7 +47,7 @@
   <body>
     <div class="container-xxl bg-white p-0">
       <!-- Spinner Start -->
-      <div
+      <!-- <div
         id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
       >
@@ -58,7 +58,7 @@
         >
           <span class="sr-only">Loading...</span>
         </div>
-      </div>
+      </div> -->
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
@@ -85,7 +85,7 @@
             <?php echo '<a href="index.php#home" class="nav-item nav-link">Home</a>';?>
             <?php echo '<a href="index.php#about" class="nav-item nav-link">About Us</a>';?>
             <?php echo '<a href="menu.php#about" class="nav-item nav-link">Menu</a>';?>
-             
+            <a href="#cart" class="nav-item nav-link">Cart</a>
               <?php echo '<a href="index.php#team" class="nav-item nav-link">Our Team</a>';?>
             </div>
           </div>
@@ -94,7 +94,7 @@
 <br>
 <br>
 <br>
-<div class="container-xxl py-5" id="menu">
+<div class="container-xxl py-5" id="cart">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
@@ -157,12 +157,12 @@
            
             echo "
             </table>
-             
+            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" onclick = \"locationreload()\">Purchase</button></form>
             </div>
           </div>";
 
           }
-          echo "<form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" href=''>Purchase</button></form>";
+          
           if(isset($_POST['removeCart'])) {  
             
             $valueRemove = $_POST['removeCart'];
@@ -172,15 +172,27 @@
           }
           if(isset($_POST['purchaseButton'])) {  
             //for this to work we have to iterate through table to add items
-            //$value = $_POST['stockButton'];
-            //$stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
-            //$stockUp;
+            
+            $query2 = "SELECT * FROM cart_view where user_ID=501";
+            $result2 = $pdo->query($query2);
+            while ($row = $result2->fetch(PDO::FETCH_ASSOC)) {
+              $stockUp = $pdo->query("update inventory set stock = stock-{$row['quantity']} where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");
+              $removeCartTable = $pdo->query("delete from cart where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");              
+            }
+            
           }
+          
           $pdo = null;
           // Close the PDO connection  
           ?>
         </div>
       </div>
+      <script>
+        function locationreload() {
+                location.reload();
+                 
+        }
+      </script>
  <!-- Footer Start -->
  <div
         class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
