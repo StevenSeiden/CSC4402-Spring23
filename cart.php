@@ -65,7 +65,7 @@
       <div class="container-xxl position-relative p-0">
         <nav
           class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
-        >
+         >
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -130,12 +130,13 @@
             } else {
           echo "<table class=\"table\">
           <tr>
-          <thead style=\"background-color:#436e7d\">
+          <thead style=\"background-color:#0F172B\">
             <th>Title</th>
             <th>Description</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
+            <th>Remove</th>
             </thead>
           </tr>";
           while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -147,6 +148,7 @@
               <td>\${$row['price']}</td>
               <td>{$row['quantity']}</td>
               <td>\${$row['total_price']}</td>
+              <td><form method=\"post\"><button name=\"removeCart\" value=\"{$row['title']}\" type=\"submit\"  class=\"btn btn-square btn-primary mx-1\" href=''><i class=\"bi bi-trash\"></button></form></td>
             </tr>  
               ";
           
@@ -160,8 +162,21 @@
           </div>";
 
           }
-         
-           $pdo = null;
+          echo "<form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" href=''>Purchase</button></form>";
+          if(isset($_POST['removeCart'])) {  
+            
+            $valueRemove = $_POST['removeCart'];
+            $removeCartTable = $pdo->query("delete from cart where (select distinct meal_ID from items where title like \"$valueRemove\") = meal_ID;");
+            
+            //$stockUp;
+          }
+          if(isset($_POST['purchaseButton'])) {  
+            //for this to work we have to iterate through table to add items
+            //$value = $_POST['stockButton'];
+            //$stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
+            //$stockUp;
+          }
+          $pdo = null;
           // Close the PDO connection  
           ?>
         </div>
