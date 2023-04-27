@@ -200,7 +200,7 @@
                   <img
                     class="img-fluid rounded w-75 wow zoomIn"
                     data-wow-delay="0.3s"
-                    src="img/mealsFromDB/hamburger.jpg"
+                    src="img/hamburger-with-fries.jpg"
                     style="margin-top: 25%"
                   />
                 </div>
