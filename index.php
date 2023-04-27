@@ -287,14 +287,20 @@
 
       <!-- About End -->
       <!-- Menu -->
-      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-      <?php echo '<a href="menu.php"><h5
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s" style="background:lightgray; height:250px; ">
+      <?php echo '<a href="menu.php">
+            <br>
+            <br>
+            <h5
               class="section-title ff-secondary text-center text-primary fw-normal"
             >
               Food Menu
             </h5>
-            <h1 class="mb-5">All Menu Items</h1>
+            <h1 class="mb-4">All Menu Items</h1>
+            <button type="button" class="btn btn-primary  btn-lg">Go to Menu</button>
          </a>';?>
+         <br>
+         <br>
             <!-- <h5
               class="section-title ff-secondary text-center text-primary fw-normal"
             >
@@ -325,14 +331,14 @@
                 <h5 class="mb-0">Lilly Moreau</h5>
                 <small>Integration Lead</small>
                 <div class="d-flex justify-content-center mt-3">
-                  <a class="btn btn-square btn-primary mx-1" href=""
+                  <a class="btn btn-square btn-primary mx-1" href="https://www.linkedin.com/in/lillian-moreau-697a34224/"
                     ><i class="fab fa-linkedin"></i
                   ></a>
-                  <a class="btn btn-square btn-primary mx-1" href=""
+                  <a class="btn btn-square btn-primary mx-1" href="https://github.com/lmoreau21"
                     ><i class="fab fa-github"></i
                   ></a>
-                  <a class="btn btn-square btn-primary mx-1" href=""
-                    ><i class="fab fa-facebook"></i
+                  <a class="btn btn-square btn-primary mx-1" href="mailto:lmoreau2021@gmail.com"
+                    ><i class="fab fa-mail"></i
                   ></a>
                 </div>
               </div>

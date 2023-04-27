@@ -192,7 +192,7 @@
                 <small class=\"fst-italic\">{$row['description']}</small>
                 <small>Cuisine: {$row['cuisine']}  Diet: {$row['dietary']}\t Quantity: {$row['stock']}</small>
 
-                <button class=\"btn btn btn-primary mx-1\" style=\"width:150px; top:4px;\" href=''>Add to cart</button>
+                <button class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" href=''>Add to cart</button>
               </div>
                 
               
