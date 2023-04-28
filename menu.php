@@ -45,7 +45,7 @@
   </head>
 
   <body>
-    <div class="container-xxl bg-white p-0">
+   
       <!-- Spinner Start -->
       <!-- <div
         id="spinner"
@@ -62,7 +62,7 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-      <div class="container-xxl position-relative p-0">
+      <div style="background-color:#0F172B; height:100px; width:100vw;">
         <nav
           class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
         >
@@ -94,7 +94,7 @@
       </div>
 <br>
 
-<div class="container-xxl py-5 ol-md-8 offset-md-2" id="menu">
+<div class="container-xxl" id="menu">
         <div class="container" style="margin: auto">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
