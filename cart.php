@@ -45,7 +45,7 @@
   </head>
 
   <body>
-    <div class="container-xxl bg-white p-0">
+  
       <!-- Spinner Start -->
       <!-- <div
         id="spinner"
@@ -62,10 +62,11 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-      <div class="container-xxl position-relative p-0">
-        <nav
-          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
-         >
+      <div style="background-color:#0F172B; height:100px; width:100vw;">
+  
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
+  >
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -209,6 +210,7 @@
               <a class="btn btn-link" href="#about">About Us</a>
               <a class="btn btn-link" href="">Privacy Policy</a>
               <a class="btn btn-link" href="">Terms & Condition</a>
+              <a href="restock.php" class="nav-item nav-link">Restock</a>
             </div>
             <div class="col-lg-3 col-md-6">
               <h4
