@@ -84,8 +84,10 @@
               <a href="#about" class="nav-item nav-link">About</a>
               <?php echo '<a href="menu.php" class="nav-item nav-link">Menu</a>';?>
               <!-- <a href="#menu" >Menu</a> -->
+              <?php echo '<a href="cart.php" class="nav-item nav-link">Cart</a>';?>
+            
               <a href="#team" class="nav-item nav-link">Our Team</a>
-            </div>
+            </div>  
           </div>
         </nav>
 
@@ -200,7 +202,7 @@
                   <img
                     class="img-fluid rounded w-75 wow zoomIn"
                     data-wow-delay="0.3s"
-                    src="img/hamburger-with-fries.jpg"
+                    src="img/mealsFromDB/hamburger.jpg"
                     style="margin-top: 25%"
                   />
                 </div>
@@ -553,6 +555,7 @@
               <a class="btn btn-link" href="#about">About Us</a>
               <a class="btn btn-link" href="">Privacy Policy</a>
               <a class="btn btn-link" href="">Terms & Condition</a>
+              <a href="restock.php" class="nav-item nav-link">Restock</a>
             </div>
             <div class="col-lg-3 col-md-6">
               <h4

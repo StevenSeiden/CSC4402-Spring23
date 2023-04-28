@@ -217,6 +217,7 @@
               <a class="btn btn-link" href="#about">About Us</a>
               <a class="btn btn-link" href="">Privacy Policy</a>
               <a class="btn btn-link" href="">Terms & Condition</a>
+              <a href="restock.php" class="nav-item nav-link">Restock</a>
             </div>
             <div class="col-lg-3 col-md-6">
               <h4
