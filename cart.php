@@ -95,7 +95,7 @@
 <br>
 <br>
 <br>
-<div class="container-xxl py-5" id="cart">
+<div class="container-xxl py-5 bg-white" id="cart">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5

@@ -62,20 +62,11 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-<<<<<<< Updated upstream
       <div style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
       
   <nav
    class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
   
-=======
-
-      <div class="container-xxl position-relative p-0  background-color:#0F172B">
-        <nav
-          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 background-color:#0F172B"
-        >
-       
->>>>>>> Stashed changes
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
