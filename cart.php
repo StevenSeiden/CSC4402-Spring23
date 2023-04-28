@@ -62,11 +62,11 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-      <div style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
-      
-  <nav
-   class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
+      <div style="background-color:#0F172B; height:100px; width:100vw;">
   
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
+  >
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -85,7 +85,7 @@
             <div class="navbar-nav ms-auto py-0 pe-4">
             <?php echo '<a href="index.php#home" class="nav-item nav-link">Home</a>';?>
             <?php echo '<a href="index.php#about" class="nav-item nav-link">About Us</a>';?>
-            <?php echo '<a href="menu.php" class="nav-item nav-link">Menu</a>';?>
+            <?php echo '<a href="menu.php#about" class="nav-item nav-link">Menu</a>';?>
             <a href="#cart" class="nav-item nav-link">Cart</a>
               <?php echo '<a href="index.php#team" class="nav-item nav-link">Our Team</a>';?>
             </div>
@@ -95,7 +95,7 @@
 <br>
 <br>
 <br>
-<div class="container-xxl py-5 bg-white" id="cart">
+<div class="container-xxl py-5" id="cart">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5

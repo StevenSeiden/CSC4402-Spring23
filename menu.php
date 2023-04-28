@@ -47,7 +47,7 @@
   <body>
     <div class="container-xxl bg-white p-0">
       <!-- Spinner Start -->
-      <div
+      <!-- <div
         id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
       >
@@ -58,15 +58,14 @@
         >
           <span class="sr-only">Loading...</span>
         </div>
-      </div>
+      </div> -->
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-      <div style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
-      
-  <nav
-   class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
-  
+      <div class="container-xxl position-relative p-0">
+        <nav
+          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
+        >
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -93,11 +92,10 @@
           </div>
         </nav>
       </div>
-
-
 <br>
-<div class="container-xxl py-5 bg-white" id="menu">
-        <div class="container">
+
+<div class="container-xxl py-5 ol-md-8 offset-md-2" id="menu">
+        <div class="container" style="margin: auto">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
               class="section-title ff-secondary text-center text-primary fw-normal"
