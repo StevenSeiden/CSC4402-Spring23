@@ -39,8 +39,6 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
@@ -64,12 +62,10 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
-
-      <div class="container-xxl position-relative p-0  background-color:#0F172B">
+      <div class="container-xxl position-relative p-0">
         <nav
-          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 background-color:#0F172B"
+          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0"
         >
-       
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -96,12 +92,10 @@
           </div>
         </nav>
       </div>
-
-
 <br>
 
-<div class="container-xxl py-5" id="menu">
-        <div class="container">
+<div class="container-xxl py-5 ol-md-8 offset-md-2" id="menu">
+        <div class="container" style="margin: auto">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
               class="section-title ff-secondary text-center text-primary fw-normal"
@@ -110,10 +104,10 @@
             </h5>
             <h1 class="mb-5">All Menu Items</h1>
           </div>
-          
-          <form method="get" >
+        
+          <form method="get" style="margin: 0 auto !important; text-align: center;">
           <label for="cuisineType">Cuisine: </label>
-          <select id="cuisineType" name="cuisineType">
+          <select id="cuisineType" name="cuisineType" style="width: 150px">
             <option value="All">All</option>
             <option value="American">American</option>
             <option value="Asian">Asian</option>
@@ -152,12 +146,12 @@
             <option value="Scottish">Scottish</option>
             <option value="English">English</option>
             </select>
-            <button type="submit" href="#menu">Filter</button>
+            <button class="btn btn-primary btn-sm" type="submit" href="#menu">Filter</button>
           </form>
 
-          <form method="get" >
-          <label for="dietaryType">Diet: </label>
-          <select id="dietaryType" name="dietaryType">
+          <form method="get" style="margin: 0 auto !important; margin-top: 10px  !important; text-align: center;" >
+          <label for="dietaryType">Diet:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+          <select id="dietaryType" name="dietaryType" style="width: 150px">
             <option value="All">All</option>
             <option value="Pescetarian">Pescetarian</option>
             <option value="Dairy Free">Dairy Free</option>
@@ -171,9 +165,13 @@
             <option value="Hala">Hala</option>
             
             </select>
-            <button type="submit" href="#menu">Filter</button>
+            <button class="btn btn-primary btn-sm" type="submit" href="#menu">Filter</button>
           </form>
+          <br>
+          <h5 class="d-flex justify-content-between border-bottom pb-2\"></h5>
+        
         <br>
+
         <?php
           // Create a PDO object
          // echo( document.querySelector('#cuisineType'));
@@ -195,12 +193,14 @@
             //   // Otherwise, show only meals of the selected cuisine
             //   $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
             // }
+
             // if ($diet == 'All'||$diet == '') {
             //   $query = "SELECT * FROM main";
             // } else {
             //   // Otherwise, show only meals of the selected cuisine
             //   $query = "SELECT * FROM main WHERE dietary like \"$diet\"";
             // }
+
             if($cuisine == 'All' || $cuisine == '') //spaghetti ahh and unreadable if else chain will optimize later -- Mike
             {
               if($diet == 'All' || $diet == '') //if both diet and cuisine are null or 'All'
@@ -219,6 +219,7 @@
                 $query = "SELECT * FROM main WHERE dietary like \"$diet\" AND cuisine like \"$cuisine\"";
               }
             }
+
           // Run a query against the database
           $result = $pdo->query($query);
           echo "<div class=\"tab-content\">
@@ -247,7 +248,11 @@
                   <span class=\"text-primary\">\${$row['price']}</span>
                 </h5>
                 <small class=\"fst-italic\">{$row['description']}</small>
-                <small>Cuisine: {$row['cuisine']}  Diet: {$row['dietary']}\t Quantity: {$row['stock']}</small>
+                <br>
+                <small><strong>Cuisine:</strong> {$row['cuisine']}</small>
+                <small><strong>Diet:</strong> {$row['dietary']}\t </small>
+                <small><strong>Available:</strong> {$row['stock']} meals</small>
+                <br>
                 ";
             if($row['stock']>0){
               echo "<form method=\"post\"><button value=\"{$row['title']}\" name=\"stockButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" href=''>Add to cart</button></form>";
@@ -262,31 +267,11 @@
           </div>";
 
           }}
-          
           if(isset($_POST['stockButton'])) {  
             
             $value = $_POST['stockButton'];
-            $temp = $pdo->query("Select Distinct meal_ID FROM items WHERE title like \"$value\"");
-            $value2 = $temp->fetch(PDO::FETCH_ASSOC);
-            //echo($value2['meal_ID']);
-            $temp2 = $pdo->query("Select * FROM cart WHERE meal_ID = {$value2['meal_ID']}");
-            
-            $quanRowTemp = $pdo->query("SELECT quantity FROM cart_view where title like \"$value\"");
-            $quanRow = $quanRowTemp->fetch(PDO::FETCH_ASSOC);
-
-            $stockRowTemp = $pdo->query("SELECT stock FROM main where title like \"$value\"");
-            $stockRow = $stockRowTemp->fetch(PDO::FETCH_ASSOC);
-            if($temp2->rowCount() == 0){
-              $query2 = $pdo->query("insert into cart values(501, {$value2['meal_ID']}, 1)");
-             
-            }
-            else if($quanRow['quantity']<$stockRow['stock']){
-              $query2 = $pdo->query("update cart set quantity = quantity+1 where meal_ID ={$value2['meal_ID']}");
-             
-            }else{
-              echo("Unable to Add $value to Cart due to lack of stock");
-      
-            }
+            $stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
+            //$stockUp;
           }
            $pdo = null;
           // Close the PDO connection  
