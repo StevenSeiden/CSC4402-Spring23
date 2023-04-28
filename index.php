@@ -85,10 +85,7 @@
               <?php echo '<a href="menu.php" class="nav-item nav-link">Menu</a>';?>
               <!-- <a href="#menu" >Menu</a> -->
               <?php echo '<a href="cart.php" class="nav-item nav-link">Cart</a>';?>
-<<<<<<< Updated upstream
             
-=======
->>>>>>> Stashed changes
               <a href="#team" class="nav-item nav-link">Our Team</a>
             </div>  
           </div>
