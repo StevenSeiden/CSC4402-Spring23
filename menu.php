@@ -62,11 +62,20 @@
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
+<<<<<<< Updated upstream
       <div style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
       
   <nav
    class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" style="background-color:#0F172B; height:90px; width:100vw;position:fixed">
   
+=======
+
+      <div class="container-xxl position-relative p-0  background-color:#0F172B">
+        <nav
+          class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 background-color:#0F172B"
+        >
+       
+>>>>>>> Stashed changes
         <?php echo '<a href="index.php" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
               <img src="img/BytesAbroad.png" alt="Logo" />BytesAbroad
@@ -93,10 +102,18 @@
           </div>
         </nav>
       </div>
+<<<<<<< Updated upstream
 <br>
 
 <div class="container-xxl py-5 ol-md-8 offset-md-2" id="menu">
         <div class="container" style="margin: auto">
+=======
+
+
+<br>
+<div class="container-xxl py-5" id="menu">
+        <div class="container">
+>>>>>>> Stashed changes
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
               class="section-title ff-secondary text-center text-primary fw-normal"
