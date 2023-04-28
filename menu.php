@@ -92,9 +92,9 @@
           </div>
         </nav>
       </div>
-<br>
 
-<div class="container-xxl" id="menu">
+<div class="container-xxl bg-white" id="menu">
+<br>
         <div class="container" style="margin: auto">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
@@ -270,8 +270,27 @@
           if(isset($_POST['stockButton'])) {  
             
             $value = $_POST['stockButton'];
-            $stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
-            //$stockUp;
+            $temp = $pdo->query("Select Distinct meal_ID FROM items WHERE title like \"$value\"");
+            $value2 = $temp->fetch(PDO::FETCH_ASSOC);
+            //echo($value2['meal_ID']);
+            $temp2 = $pdo->query("Select * FROM cart WHERE meal_ID = {$value2['meal_ID']}");
+            
+            $quanRowTemp = $pdo->query("SELECT quantity FROM cart_view where title like \"$value\"");
+            $quanRow = $quanRowTemp->fetch(PDO::FETCH_ASSOC);
+
+            $stockRowTemp = $pdo->query("SELECT stock FROM main where title like \"$value\"");
+            $stockRow = $stockRowTemp->fetch(PDO::FETCH_ASSOC);
+            if($temp2->rowCount() == 0){
+              $query2 = $pdo->query("insert into cart values(501, {$value2['meal_ID']}, 1)");
+             
+            }
+            else if($quanRow['quantity']<$stockRow['stock']){
+              $query2 = $pdo->query("update cart set quantity = quantity+1 where meal_ID ={$value2['meal_ID']}");
+             
+            }else{
+              echo("Unable to Add $value to Cart due to lack of stock");
+      
+            }
           }
            $pdo = null;
           // Close the PDO connection  
