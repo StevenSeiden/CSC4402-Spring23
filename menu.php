@@ -207,7 +207,7 @@
                 $query = "SELECT * FROM main";
               else //if diet is anything other than null or all
               {
-                $query = "SELECT * FROM main WHERE dietary like \"$diet\"";
+                $query = "SELECT * FROM main WHERE dietary like \"%$diet%\"";
               }
             }
             else //cuisine filter not empty
@@ -216,7 +216,7 @@
                 $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
               else //both diet and cuisine are not null in dropdown
               {
-                $query = "SELECT * FROM main WHERE dietary like \"$diet\" AND cuisine like \"$cuisine\"";
+                $query = "SELECT * FROM main WHERE dietary like \"%$diet%\" AND cuisine like \"$cuisine\"";
               }
             }
 
