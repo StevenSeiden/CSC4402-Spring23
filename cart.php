@@ -93,7 +93,7 @@
         </nav>
       </div>
 
-<div class="container-xxl py-5 bg-white" id="cart">
+<div class="container-xxl py-5 menuBg" id="cart">
 <br>
 <br>
 <br>

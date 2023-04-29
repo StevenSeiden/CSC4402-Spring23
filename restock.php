@@ -84,7 +84,8 @@
             <?php echo '<a href="index.php#home" class="nav-item nav-link">Home</a>';?>
             <?php echo '<a href="index.php#about" class="nav-item nav-link">About Us</a>';?>
             <?php echo '<a href="menu.php#about" class="nav-item nav-link">Menu</a>';?>
-             
+                           <?php echo '<a href="cart.php" class="nav-item nav-link">Cart</a>';?>
+
               <?php echo '<a href="index.php#team" class="nav-item nav-link">Our Team</a>';?>
             </div>
           </div>
