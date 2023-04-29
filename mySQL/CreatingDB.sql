@@ -50,6 +50,7 @@ insert into cuisine_Type values (132, 'Norwegian');
 insert into cuisine_Type values (133, 'Finnish');
 insert into cuisine_Type values (134, 'Irish');
 insert into cuisine_Type values (135, 'Scotish');
+insert into cuisine_Type values (136, 'Canadian');
 
 
 create table dietary_Type(
@@ -68,7 +69,7 @@ insert into dietary_Type values (207, 'Vegan');
 insert into dietary_Type values (208, 'Kosher');
 insert into dietary_Type values (209, 'Diabetes');
 insert into dietary_Type values (210, 'Hala');
-insert into dietary_Type values (299, null); -- No Dietary restriction
+insert into dietary_Type values (299, 'None'); -- No Dietary restriction
 
 create table items(
 	meal_ID int(3),
@@ -99,7 +100,8 @@ insert into items values (008, 	"Spaghetti and Meatballs",	"Classic Italian dish
 insert into items values (009,  "Stir-fried Beef and Broccoli",	"Thinly sliced beef and broccoli florets stir-fried in a savory sauce, served over rice", 12.99, 2, 104, 204);
 insert into items values (010, 	"Veggie Pad Thai", "Stir-fried rice noodles with vegetables and peanuts in a sweet and tangy sauce", 10.99,	2, 114, 206);
 insert into items values (010, 	"Veggie Pad Thai", "Stir-fried rice noodles with vegetables and peanuts in a sweet and tangy sauce", 10.99,	2, 114, 205);
-
+insert into items values (011, "Soft Preztel", "A twisted knot of dough, typically made from wheat flour, water, yeast, salt, and sometimes sugar and oil", 3.59, 1, 118, 206);
+insert into items values (012, "Hawaiian Pizza", "A type of pizza that typically includes tomato sauce, cheese, ham or Canadian bacon, and pineapple as the main toppings", 13.99, 4, 136, 299);
 
 create table inventory(
 	meal_ID int(3),
@@ -108,16 +110,18 @@ create table inventory(
     foreign key (meal_ID) references items(meal_ID)
 );
 
-insert into inventory values (001, 12);
-insert into inventory values (002, 3);
-insert into inventory values (003, 7);
-insert into inventory values (004, 2);
-insert into inventory values (005, 1);
-insert into inventory values (006, 8);
+insert into inventory values (001, 129);
+insert into inventory values (002, 334);
+insert into inventory values (003, 72);
+insert into inventory values (004, 26);
+insert into inventory values (005, 9);
+insert into inventory values (006, 18);
 insert into inventory values (007, 999);
-insert into inventory values (008, 11);
-insert into inventory values (009, 21);
-insert into inventory values (010, 13);
+insert into inventory values (008, 113);
+insert into inventory values (009, 212);
+insert into inventory values (010, 313);
+insert into inventory values (011, 423);
+insert into inventory values (012, 0);
 
 create table users (
 	user_ID int(3),
@@ -148,7 +152,7 @@ CREATE VIEW Cart_View AS
 	SELECT DISTINCT user_ID, title, description, quantity, price, quantity*price AS total_price FROM cart
     left join items ON cart.meal_ID = items.meal_ID;
 
-SELECT * from Cart_View;
+-- SELECT * from Cart_View;
 
 CREATE VIEW Main AS
 	SELECT distinct title, description, price, serving, cuisine, group_concat(dietary) as dietary, stock FROM items
