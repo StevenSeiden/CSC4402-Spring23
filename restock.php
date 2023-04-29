@@ -116,7 +116,7 @@
           }
           
           // If no cuisine is selected, show all meals
-          $query = "SELECT distinct * FROM inventory NATURAL JOIN items";
+          $query = "SELECT distinct meal_ID, stock, title, description, price, stock FROM inventory NATURAL JOIN items";
          
           // Run a query against the database
           $result = $pdo->query($query);

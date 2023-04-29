@@ -110,8 +110,6 @@
           <select id="cuisineType" name="cuisineType" style="width: 150px">
             <option value="All">All</option>
             <option value="American">American</option>
-            <option value="Asian">Asian</option>
-            <option value="Caribbean">Caribbean</option>
             <option value="Chinese">Chinese</option>
             <option value="French">French</option>
             <option value="Greek">Greek</option>
@@ -125,26 +123,6 @@
             <option value="Thai">Thai</option>
             <option value="Vietnamese">Vietnamese</option>
             <option value="Mediterranean">Mediterranean</option>
-            <option value="African">African</option>
-            <option value="German">German</option>
-            <option value="Brazilian">Brazilian</option>
-            <option value="Peruvian">Peruvian</option>
-            <option value="Argentinian">Argentinian</option>
-            <option value="Turkish">Turkish</option>
-            <option value="Russian">Russian</option>
-            <option value="Indonesian">Indonesian</option>
-            <option value="Filipino">Filipino</option>
-            <option value="Polish">Polish</option>
-            <option value="Moroccan">Moroccan</option>
-            <option value="Israeli">Israeli</option>
-            <option value="Portuguese">Portuguese</option>
-            <option value="Swedish">Swedish</option>
-            <option value="Danish">Danish</option>
-            <option value="Norwegian">Norwegian</option>
-            <option value="Finnish">Finnish</option>
-            <option value="Irish">Irish</option>
-            <option value="Scottish">Scottish</option>
-            <option value="English">English</option>
             </select>
             <button class="btn btn-primary btn-sm" type="submit" href="#menu">Filter</button>
           </form>
@@ -185,22 +163,6 @@
             $diet = $_GET["dietaryType"];
           }
           
-          // If no cuisine is selected, show all meals, or show only other dropdown queries.
-          
-            // if ($cuisine == 'All'||$cuisine == '') {
-            //   $query = "SELECT * FROM main";
-            // } else {
-            //   // Otherwise, show only meals of the selected cuisine
-            //   $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
-            // }
-
-            // if ($diet == 'All'||$diet == '') {
-            //   $query = "SELECT * FROM main";
-            // } else {
-            //   // Otherwise, show only meals of the selected cuisine
-            //   $query = "SELECT * FROM main WHERE dietary like \"$diet\"";
-            // }
-
             if($cuisine == 'All' || $cuisine == '') //spaghetti ahh and unreadable if else chain will optimize later -- Mike
             {
               if($diet == 'All' || $diet == '') //if both diet and cuisine are null or 'All'
@@ -272,7 +234,6 @@
             $value = $_POST['stockButton'];
             $temp = $pdo->query("Select Distinct meal_ID FROM items WHERE title like \"$value\"");
             $value2 = $temp->fetch(PDO::FETCH_ASSOC);
-            //echo($value2['meal_ID']);
             $temp2 = $pdo->query("Select * FROM cart WHERE meal_ID = {$value2['meal_ID']}");
             
             $quanRowTemp = $pdo->query("SELECT quantity FROM cart_view where title like \"$value\"");
@@ -299,7 +260,7 @@
       </div>
  <!-- Footer Start -->
  <div
-        class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+        class="container-fluid bg-dark text-light footer wow fadeIn"
         data-wow-delay="0.1s"
       >
         <div class="container py-5">
