@@ -93,7 +93,7 @@
         </nav>
       </div>
 
-<div class="container-xxl bg-white wow fadeIn" data-wow-delay="0.1s" id="menu">
+<div class="container-xxl menuBg" id="menu">
 <br>
         <div class="container" style="margin: auto">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -118,6 +118,7 @@
             <option value="Japanese">Japanese</option>
             <option value="Korean">Korean</option>
             <option value="Mexican">Mexican</option>
+            <option value="German">Geman</option>
             <option value="Middle Eastern">Middle Eastern</option>
             <option value="Spanish">Spanish</option>
             <option value="Thai">Thai</option>
@@ -260,10 +261,10 @@
       </div>
  <!-- Footer Start -->
  <div
-        class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+        class="container-fluid bg-dark text-light footer wow fadeIn"
         data-wow-delay="0.1s"
       >
-        <div class="container py-5">
+        <div class="container py-5" style="background-color:rgba(0,0,0,0);">
           <div class="row g-5">
             <div class="col-lg-3 col-md-6">
               <h4

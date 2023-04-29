@@ -44,7 +44,7 @@
   </head>
 
   <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="container-xxl p-0">
       <!-- Spinner Start -->
       <div
         id="spinner"
@@ -92,7 +92,7 @@
         </nav>
 
         <div class="container-xxl py-5 bg-dark hero-header mb-5" id="home">
-          <div class="container my-5 py-5">
+          <div class="container my-5 py-5" style="background-color:rgba(0,0,0,0);">
             <div class="row align-items-center g-5">
               <div class="col-lg-6 text-center text-lg-start">
                 <h1 class="display-3 text-white animated slideInLeft">
@@ -149,10 +149,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <a href="cart.html">
-                  <button style="border: none; background-color: white">
-                    <div class="service-item rounded pt-3">
+               <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="service-item rounded pt-3">
                       <div class="p-4">
                         <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
                         <h5>Online Order</h5>
@@ -161,10 +159,8 @@
                           comfort of your home or office with our simple online
                           ordering system
                         </p>
-                      </div>
-                    </div>
-                  </button>
-                </a>
+                  </div>
+                </div>
               </div>
               <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                 <div class="service-item rounded pt-3">
@@ -202,7 +198,7 @@
                   <img
                     class="img-fluid rounded w-75 wow zoomIn"
                     data-wow-delay="0.3s"
-                    src="img/mealsFromDB/Hamburger.jpg"
+                    src="img/mealsFromDB/hamburger.jpg"
                     style="margin-top: 25%"
                   />
                 </div>
@@ -541,10 +537,10 @@
 
       <!-- Footer Start -->
       <div
-        class="container-fluid bg-dark text-light pt-5 mt-5 footer wow fadeIn"
+        class="container-fluid bg-dark text-light footer wow fadeIn "
         data-wow-delay="0.1s"
       >
-        <div class="container py-5">
+        <div class="container py-5" style="background-color:rgba(0,0,0,0);">
           <div class="row g-5">
             <div class="col-lg-3 col-md-6">
               <h4
