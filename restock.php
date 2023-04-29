@@ -91,9 +91,9 @@
         </nav>
       </div>
 
-<div class="container-xxl py-5 bg-white" id="restock">
-<br>
-<br>
+  <div class="container-xxl py-5 bg-white" id="restock">
+  <br>
+  <br>
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
@@ -186,9 +186,10 @@
 
       
  <!-- Footer Start -->
- <div
-        class="container-fluid bg-dark text-light footer wow fadeIn"
+  <div
+        class="container-fluid bg-dark text-light pt-5 mt-5 footer wow fadeIn"
         data-wow-delay="0.1s"
+        style="width:100vw"
       >
         <div class="container py-5">
           <div class="row g-5">
@@ -251,7 +252,7 @@
         </div>
       </div>
       <!-- Footer End -->
-    </div>
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

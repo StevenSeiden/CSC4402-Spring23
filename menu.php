@@ -93,7 +93,7 @@
         </nav>
       </div>
 
-<div class="container-xxl bg-white" id="menu">
+<div class="container-xxl bg-white wow fadeIn" data-wow-delay="0.1s" id="menu">
 <br>
         <div class="container" style="margin: auto">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -260,7 +260,7 @@
       </div>
  <!-- Footer Start -->
  <div
-        class="container-fluid bg-dark text-light footer wow fadeIn"
+        class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
         data-wow-delay="0.1s"
       >
         <div class="container py-5">
