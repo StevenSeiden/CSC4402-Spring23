@@ -4,6 +4,14 @@
     --light: #F1F8FF;
     --dark: #0F172B;
 }
+
+@media (prefers-color-scheme: dark) {
+    td {
+        color: #FFFFFF;
+    }
+}
+
+
 .ff-secondary {
     font-family: 'Pacifico', cursive;
 }
@@ -45,9 +53,7 @@ table {
     font-weight: bold;
   }
   
-  td {
-    color: #333333;
-  }
+
 
 
 /*** Spinner ***/
