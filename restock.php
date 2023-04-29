@@ -90,10 +90,10 @@
           </div>
         </nav>
       </div>
-<br>
-<br>
-<br>
+
 <div class="container-xxl py-5 bg-white" id="restock">
+<br>
+<br>
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
@@ -131,29 +131,15 @@
             displayInventory($result);
           }
 
-          
-
           echo "<form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"align-items: center; width:150px; top:4px;\" href=''>Confirm Updates</button></form>";
+          
           if(isset($_POST['incrementInventory'])) {  
-            
             $updatedMeal = $_POST['incrementInventory'];
             $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock + 1 WHERE \"$updatedMeal\" = meal_ID;");
-            displayInventory($updatedStockTable);
-            //$stockUp;
           }
           else if(isset($_POST['decrementInventory'])) {  
-            
             $updatedMeal = $_POST['decrementInventory'];
             $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock - 1 WHERE \"$updatedMeal\" = meal_ID;");
-            displayInventory($updatedStockTable);
-            //$decrementStock;
-          }
-
-          if(isset($_POST['purchaseButton'])) {  
-            //for this to work we have to iterate through table to add items
-            //$value = $_POST['stockButton'];
-            //$stockUp = $pdo->query("update inventory set stock = stock-1 where (select distinct meal_ID from items where title like \"$value\") = meal_ID;");
-            //$stockUp;
           }
 
           function displayInventory($result){
@@ -203,7 +189,7 @@
       
  <!-- Footer Start -->
  <div
-        class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+        class="container-fluid bg-dark text-light footer wow fadeIn"
         data-wow-delay="0.1s"
       >
         <div class="container py-5">
