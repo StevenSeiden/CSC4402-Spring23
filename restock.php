@@ -130,8 +130,6 @@
           else{
             displayInventory($result);
           }
-
-          echo "<form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"align-items: center; width:150px; top:4px;\" href=''>Confirm Updates</button></form>";
           
           if(isset($_POST['incrementInventory'])) {  
             $updatedMeal = $_POST['incrementInventory'];
