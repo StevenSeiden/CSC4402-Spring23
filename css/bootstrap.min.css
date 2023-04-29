@@ -50,21 +50,32 @@ body {
     color: #666565;
     background-color: #F1F8FF;
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    width: 100% !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+   
+}
+
+
+body::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #666565;
         color: #F1F8FF;
+        width: 100% !important;
     }
 
     .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
         width: 100%;
-        padding-right: var(--bs-gutter-x, .75rem);
-        padding-left: var(--bs-gutter-x, .75rem);
-        margin-right: auto;
-        margin-left: auto;
+        padding-right: 5%;
+        padding-left: 5%;
+        margin-right: 0px;
+        margin-left: 0px;
         background-color:#23242b
     }
 
@@ -313,7 +324,7 @@ img, svg {
 
 table {
     caption-side: bottom;
-    border-collapse: collapse
+    border-collapse: collapse;
 }
 
 caption {
@@ -619,37 +630,43 @@ progress {
     width: 100%;
     padding-right: var(--bs-gutter-x, .75rem);
     padding-left: var(--bs-gutter-x, .75rem);
-    margin-right: auto;
-    margin-left: auto
+    margin-right: 0px;
+    margin-left: 0px
 }
 
 @media (min-width: 576px) {
     .container, .container-sm {
-        max-width: 540px
+        max-width: 576px
     }
 }
 
 @media (min-width: 768px) {
     .container, .container-sm, .container-md {
-        max-width: 720px
+        max-width: 768px
     }
 }
 
 @media (min-width: 992px) {
     .container, .container-sm, .container-md, .container-lg {
-        max-width: 960px
+        max-width: 992px
     }
 }
 
 @media (min-width: 1200px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl {
-        max-width: 1140px
+        max-width: 1200px
     }
 }
 
 @media (min-width: 1400px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
-        max-width: 1320px
+        max-width: 1400px
+    }
+}
+
+@media (min-width: 1401px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        max-width: 100%;
     }
 }
 
@@ -775,6 +792,7 @@ progress {
     flex: 0 0 auto;
     width: 100%
 }
+
 
 .offset-1 {
     margin-left: 8.33333%
@@ -5604,7 +5622,7 @@ textarea.form-control-lg {
 
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 500px;
+        max-width: 576px;
         margin: 1.75rem auto
     }
 
@@ -5623,13 +5641,13 @@ textarea.form-control-lg {
 
 @media (min-width: 992px) {
     .modal-lg, .modal-xl {
-        max-width: 800px
+        max-width: 992px
     }
 }
 
 @media (min-width: 1200px) {
     .modal-xl {
-        max-width: 1140px
+        max-width: 1200px
     }
 }
 
@@ -6315,17 +6333,17 @@ textarea.form-control-lg {
         transition: none
     }
 }
-
+/* 
 .offcanvas-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1rem
-}
+} */
 
 .offcanvas-header .btn-close {
-    padding: .5rem .5rem;
-    margin: -.5rem -.5rem -.5rem auto
+    /* padding: .5rem .5rem;
+    margin: -.5rem -.5rem -.5rem auto */
 }
 
 .offcanvas-title {
@@ -6342,16 +6360,16 @@ textarea.form-control-lg {
 .offcanvas-start {
     top: 0;
     left: 0;
-    width: 400px;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    /* width: 400px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2); */
     transform: translateX(-100%)
 }
 
 .offcanvas-end {
     top: 0;
     right: 0;
-    width: 400px;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    /* width: 400px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2); */
     transform: translateX(100%)
 }
 
@@ -6968,7 +6986,7 @@ textarea.form-control-lg {
 .flex-wrap-reverse {
     flex-wrap: wrap-reverse !important
 }
-
+/* 
 .gap-0 {
     gap: 0 !important
 }
@@ -6991,7 +7009,7 @@ textarea.form-control-lg {
 
 .gap-5 {
     gap: 3rem !important
-}
+} */
 
 .justify-content-start {
     justify-content: flex-start !important
@@ -11264,7 +11282,7 @@ textarea.form-control-lg {
     .flex-xxl-wrap-reverse {
         flex-wrap: wrap-reverse !important
     }
-
+/* 
     .gap-xxl-0 {
         gap: 0 !important
     }
@@ -11287,7 +11305,7 @@ textarea.form-control-lg {
 
     .gap-xxl-5 {
         gap: 3rem !important
-    }
+    } */
 
     .justify-content-xxl-start {
         justify-content: flex-start !important
