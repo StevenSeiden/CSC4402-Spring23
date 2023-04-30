@@ -105,7 +105,7 @@
             <h1 class="mb-5">All Menu Items</h1>
           </div>
         
-          <form method="get" style="margin: 0 auto !important; text-align: center;">
+          <form method="get" style="margin: 0 auto !important; text-align: center;"> <!-- dropdown list of cuisines -->
           <label for="cuisineType">Cuisine: </label>
           <select id="cuisineType" name="cuisineType" style="width: 150px">
             <option value="All">All</option>
@@ -128,7 +128,7 @@
             <button class="btn btn-primary btn-sm" type="submit" href="#menu">Filter</button>
           </form>
 
-          <form method="get" style="margin: 0 auto !important; margin-top: 10px  !important; text-align: center;" >
+          <form method="get" style="margin: 0 auto !important; margin-top: 10px  !important; text-align: center;" > <!-- dropdown list of diets -->
           <label for="dietaryType">Diet:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
           <select id="dietaryType" name="dietaryType" style="width: 150px">
             <option value="All">All</option>
@@ -160,11 +160,11 @@
           if (isset($_GET["cuisineType"])) { //getting dropdown input for cuisine type
             $cuisine = $_GET["cuisineType"];
           }
-          else if (isset($_GET["dietaryType"])) { //getting diet type input for cuisine type
+          else if (isset($_GET["dietaryType"])) { //getting dropdown input for diet
             $diet = $_GET["dietaryType"];
           }
           
-            if($cuisine == 'All' || $cuisine == '') //spaghetti ahh and unreadable if else chain will optimize later -- Mike
+            if($cuisine == 'All' || $cuisine == '') //case where cuisine is null or 'All'
             {
               if($diet == 'All' || $diet == '') //if both diet and cuisine are null or 'All'
                 $query = "SELECT * FROM main";
@@ -173,7 +173,7 @@
                 $query = "SELECT * FROM main WHERE dietary like \"%$diet%\"";
               }
             }
-            else //cuisine filter not empty
+            else //case where cuisine filter not empty
             {
               if($diet == 'All' || $diet == '') //if diet is null or 'All'
                 $query = "SELECT * FROM main WHERE cuisine like \"$cuisine\"";
