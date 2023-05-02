@@ -194,13 +194,12 @@
 
    <br>
    <br>   
- <!-- Footer Start -->
   <div
-        class="container-fluid bg-dark text-light pt-5 mt-5 footer wow fadeIn"
+        class="container-fluid bg-dark text-light footer wow fadeIn"
         data-wow-delay="0.1s"
-        style="width:100vw"
+        style="width:100%"
       >
-        <div class="container py-5">
+        <div class="container py-5" style="background-color:rgba(0,0,0,0);">
           <div class="row g-5">
             <div class="col-lg-3 col-md-6">
               <h4
@@ -261,7 +260,7 @@
         </div>
       </div>
       <!-- Footer End -->
-    
+        </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
