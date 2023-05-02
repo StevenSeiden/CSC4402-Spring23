@@ -55,8 +55,7 @@ body {
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
     overflow-y: scroll; 
-    padding-left:auto;
-    padding-right:auto;
+
 }
 
 
@@ -631,8 +630,8 @@ progress {
     width: 100%;
     padding-right: var(--bs-gutter-x, .75rem);
     padding-left: var(--bs-gutter-x, .75rem);
-    margin-right: 10px;
-    margin-left: 10px
+    padding-right: 10px;
+    padding-left: 10px;
 }
 /* 
 @media (min-width: 576px) {
