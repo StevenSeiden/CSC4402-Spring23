@@ -118,10 +118,10 @@
          
           // Run a query against the database
           $result = $pdo->query($query);
-          echo "<div class=\"tab-content\">
-          <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
-            <div class=\"row g-4\">";
           
+            echo "<div class=\"tab-content\">
+            <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
+              <div class=\"row g-4\">";
           if ($result->rowCount() == 0) {
             echo "<br><h5 class='text-center wow fadeup'>No results found</h5>";
           }
@@ -131,15 +131,14 @@
           
         
           function displayInventory($result){
-            echo "<table class=\"table\">
+            echo "<table class=\"table wow fadeInUp\" style\"max-width:70%\">
             <tr>
             <thead style=\"background-color:#0F172B\">
               <th>Meal ID</th>
               <th>Title</th>
               <th>Description</th>
               <th>Price</th>
-              <th>Current Inventory</th>
-              <th></th>
+              <th>Inventory</th>
               <th></th>
               <th></th>
               </thead>
@@ -174,8 +173,7 @@
             $query = "SELECT distinct meal_ID, stock, title, description, price, stock FROM inventory NATURAL JOIN items";
             $result = $pdo->query($query);
             echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/restock.php\");</script>");
-          }
-          else if(isset($_POST['decrementInventory'])) {  
+          }else if(isset($_POST['decrementInventory'])) {  
             $updatedMeal = $_POST['decrementInventory'];
             $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock - 1 WHERE \"$updatedMeal\" = meal_ID;");
             $_POST['decrementInventory'] = null;
@@ -184,10 +182,8 @@
             echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/restock.php\");</script>");
           }
 
-
           $pdo = null;
-          // Close the PDO connection
-            
+          // Close the PDO connection            
           ?>
         </div>
       </div>
