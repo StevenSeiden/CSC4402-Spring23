@@ -156,7 +156,7 @@
            
             echo "
             </table>
-            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup center\" style=\"width:150px; top:4px;\" href='menu.php'>Purchase</button></form>
+            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup\" style=\"width:150px; top:4px; left:50px\" href='menu.php'>Purchase</button></form>
             </div>
           </div>";
 
