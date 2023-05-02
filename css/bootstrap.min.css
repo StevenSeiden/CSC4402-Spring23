@@ -324,6 +324,8 @@ img, svg {
 table {
     caption-side: bottom;
     border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 caption {
@@ -1903,6 +1905,8 @@ progress {
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
     width: 90%;
     margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
     color: #666565;
     vertical-align: top;
     border-color: #dee2e6
