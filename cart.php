@@ -181,17 +181,18 @@
           }
           if(isset($_POST['purchaseButton'])) {  
             //for this to work we have to iterate through table to add items
-            
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $query2 = "SELECT * FROM cart_view where user_ID=501";
+            $result2 = $pdo->query($query2);
+            while ($row = $result2->fetch(PDO::FETCH_ASSOC)) {
               $stockUp = $pdo->query("update inventory set stock = stock-{$row['quantity']} where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");
               $removeCartTable = $pdo->query("delete from cart where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");              
             }
-           // If no cuisine is selected, show all meals
-           $query = "SELECT * FROM cart_view where user_ID=501";
-          
-           // Run a query against the database
-           $result = $pdo->query($query);
-           
+            // If no cuisine is selected, show all meals
+            $query = "SELECT * FROM cart_view where user_ID=501";
+            
+            // Run a query against the database
+            $result = $pdo->query($query);
+
             echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/cart.php\");</script>");
             
           }
