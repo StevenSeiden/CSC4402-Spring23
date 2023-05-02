@@ -5428,13 +5428,12 @@ textarea.form-control-lg {
 .btn-close-white {
     filter: invert(1) grayscale(100%) brightness(200%)
 }
-
 .toast {
     width: 350px;
     max-width: 100%;
     font-size: .875rem;
     pointer-events: auto;
-    background-color: rgba(100, 100, 100, 0.95);
+    background-color: #0F172B;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -5465,11 +5464,11 @@ textarea.form-control-lg {
     align-items: center;
     padding: .5rem .75rem;
     color: #6c757d;
-    background-color: gray;
+    background-color: rgba(223, 223, 223, 0.85);
     background-clip: padding-box;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    border-top-left-radius: 1px;
-    border-top-right-radius: 1px
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px
 }
 
 .toast-header .btn-close {
@@ -5481,6 +5480,7 @@ textarea.form-control-lg {
     padding: .75rem;
     word-wrap: break-word
 }
+
 
 .modal-open {
     overflow: hidden
