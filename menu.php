@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
@@ -42,6 +43,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    
   </head>
 
   <body>
@@ -210,8 +212,9 @@
                   <span>{$row['title']}</span>
                   <span class=\"text-primary\">\${$row['price']}</span>
                 </h5>
-                <br>
+
                 <small class=\"fst-italic\">{$row['description']}</small>
+                <br>
                 <small><strong>Cuisine:</strong> {$row['cuisine']}</small>
                 <small><strong>Diet:</strong> {$row['dietary']}\t </small>
                 
@@ -232,7 +235,6 @@
 
           }}
           if(isset($_POST['stockButton'])) {  
-           
             $value = $_POST['stockButton'];
             $temp = $pdo->query("Select Distinct meal_ID FROM items WHERE title like \"$value\"");
             $value2 = $temp->fetch(PDO::FETCH_ASSOC);
@@ -245,17 +247,28 @@
             $stockRow = $stockRowTemp->fetch(PDO::FETCH_ASSOC);
             if($temp2->rowCount() == 0){
               $query2 = $pdo->query("insert into cart values(501, {$value2['meal_ID']}, 1)");
-             
+              echo("<script>
+              $(document).ready(function(){
+                $('#addedtoast').toast('show');
+              });
+              </script>");
             }
             else if($quanRow['quantity']<$stockRow['stock']){
               $query2 = $pdo->query("update cart set quantity = quantity+1 where meal_ID ={$value2['meal_ID']}");
-             
+              echo("<script>
+              $(document).ready(function(){
+                $('#addedtoast').toast('show');
+              });
+              </script>");
             }else{
               echo("Unable to Add $value to Cart due to lack of stock");
-      
+              echo("<script>
+              $(document).ready(function(){
+                $('#failedToast').toast('show');
+              });
+              </script>");
             }
-            $_POST['stockButton'] = null;
-            echo("<script>location.reload</script>");
+            
           }
            $pdo = null;
           // Close the PDO connection  
@@ -265,8 +278,31 @@
       </div>
           <br>
           <br>
-     
-      
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" >
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="addedtoast">
+            <div class="toast-header">
+              <img src="img/bytesabroad.png" class="rounded me-2" style="width:30px">
+              <h5 class="me-auto ff-secondary text-primary fw-normal" style="margin-top:3px">Menu Update</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              An item was added to your cart!
+            </div>
+        </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" >
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="failedToast">
+            <div class="toast-header">
+              <img src="img/bytesabroad.png" class="rounded me-2" style="width:30px">
+              <h5 class="me-auto ff-secondary text-primary fw-normal" style="margin-top:3px">Menu Update</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              Unable to add item to Cart due to lacking stock!
+            </div>
+        </div>
+        </div>
+         
  <!-- Footer Start -->
  <div
         class="container-fluid bg-dark text-light footer wow fadeIn"

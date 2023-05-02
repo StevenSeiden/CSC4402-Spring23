@@ -156,7 +156,7 @@
            
             echo "
             </table>
-            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup\" style=\"width:150px; top:4px;\" href='menu.php'>Purchase</button></form>
+            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup center\" style=\"width:150px; top:4px;\" href='menu.php'>Purchase</button></form>
             </div>
           </div>";
 
@@ -203,13 +203,7 @@
         </div>
 
       </div>
-      <script>
-      // When the user clicks on <div>, open the popup
-      function myFunction() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-      }
-      </script>
+      
       <br>
       <br>
       <br>

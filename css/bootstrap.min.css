@@ -5434,11 +5434,11 @@ textarea.form-control-lg {
     max-width: 100%;
     font-size: .875rem;
     pointer-events: auto;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(100, 100, 100, 0.95);
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    border-radius: 2px;
+    border-radius: 10px;
     
 }
 
@@ -5465,7 +5465,7 @@ textarea.form-control-lg {
     align-items: center;
     padding: .5rem .75rem;
     color: #6c757d;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: gray;
     background-clip: padding-box;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     border-top-left-radius: 1px;
