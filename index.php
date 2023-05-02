@@ -285,7 +285,7 @@
 
       <!-- About End -->
       <!-- Menu -->
-      <div class="text-center wow fadeInUp" data-wow-delay="0.1s" style="background:lightgray; height:250px; ">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s" style="background:#0F172B; height:250px; ">
       <?php echo '<a href="menu.php">
             <br>
             <br>
@@ -336,7 +336,7 @@
                     ><i class="fab fa-github"></i
                   ></a>
                   <a class="btn btn-square btn-primary mx-1" href="mailto:lmoreau2021@gmail.com"
-                    ><i class="fab fa-mail"></i
+                    ><i class="bi bi-envelope-fill"></i
                   ></a>
                 </div>
               </div>
