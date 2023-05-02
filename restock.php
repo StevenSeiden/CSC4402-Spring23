@@ -109,12 +109,9 @@
 
         <?php
           // Create a PDO object
-         // echo( document.querySelector('#cuisineType'));
-          $cuisine = '';
+     
           $pdo = new PDO("mysql:host=bitesabroad.mysql.database.azure.com;dbname=bitesabroad;charset=utf8mb4", "bitesabroad", "Databased1!");
-          if (isset($_GET["cuisineType"])) {
-            $cuisine = $_GET["cuisineType"];
-          }
+          
           
           // If no cuisine is selected, show all meals
           $query = "SELECT distinct meal_ID, stock, title, description, price, stock FROM inventory NATURAL JOIN items";
@@ -173,13 +170,18 @@
             $updatedMeal = $_POST['incrementInventory'];
             $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock + 1 WHERE \"$updatedMeal\" = meal_ID;");
             $_POST['incrementInventory'] = null;
-            echo("<script>location.reload</script>");
+
+            $query = "SELECT distinct meal_ID, stock, title, description, price, stock FROM inventory NATURAL JOIN items";
+            $result = $pdo->query($query);
+            echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/restock.php\");</script>");
           }
           else if(isset($_POST['decrementInventory'])) {  
             $updatedMeal = $_POST['decrementInventory'];
             $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock - 1 WHERE \"$updatedMeal\" = meal_ID;");
             $_POST['decrementInventory'] = null;
-            echo("<script>location.reload</script>");
+            $query = "SELECT distinct meal_ID, stock, title, description, price, stock FROM inventory NATURAL JOIN items";
+            $result = $pdo->query($query);
+            echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/restock.php\");</script>");
           }
 
 

@@ -55,7 +55,8 @@ body {
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
     overflow-y: scroll; 
-   
+    padding-left:auto;
+    padding-right:auto;
 }
 
 
@@ -630,10 +631,10 @@ progress {
     width: 100%;
     padding-right: var(--bs-gutter-x, .75rem);
     padding-left: var(--bs-gutter-x, .75rem);
-    margin-right: 0px;
-    margin-left: 0px
+    margin-right: 10px;
+    margin-left: 10px
 }
-
+/* 
 @media (min-width: 576px) {
     .container, .container-sm {
         max-width: 576px
@@ -662,13 +663,13 @@ progress {
     .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
         max-width: 1400px
     }
-}
-
-@media (min-width: 1401px) {
+} */
+/* 
+@media (min-width: 100px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
         max-width: 100%;
     }
-}
+} */
 
 .row {
     --bs-gutter-x: 1.5rem;
@@ -1904,7 +1905,7 @@ progress {
     --bs-table-active-bg: rgba(0, 0, 0, 0.1);
     --bs-table-hover-color: #666565;
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-    width: 100%;
+    width: 90%;
     margin-bottom: 1rem;
     color: #666565;
     vertical-align: top;
@@ -2066,35 +2067,35 @@ progress {
     -webkit-overflow-scrolling: touch
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: px) {
     .table-responsive-sm {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 800px) {
     .table-responsive-md {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
     }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1000px) {
     .table-responsive-lg {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
     }
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1200px) {
     .table-responsive-xl {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
     }
 }
 
-@media (max-width: 1399.98px) {
+@media (max-width: 1600px) {
     .table-responsive-xxl {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
@@ -5437,7 +5438,8 @@ textarea.form-control-lg {
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    border-radius: 2px
+    border-radius: 2px;
+    
 }
 
 .toast:not(.showing):not(.show) {

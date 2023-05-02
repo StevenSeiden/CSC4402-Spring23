@@ -147,7 +147,7 @@
               <td>\${$row['price']}</td>
               <td>{$row['quantity']}</td>
               <td>\${$row['total_price']}</td>
-              <td><form method=\"post\" id='delForm'><button name=\"removeCart\" value=\"{$row['title']}\" type=\"submit\"  class=\"btn btn-square btn-primary mx-1\"><i class=\"bi bi-trash\"></button></form></td>
+              <td><form method=\"post\"><button name=\"removeCart\" value=\"{$row['title']}\" type=\"submit\"  class=\"btn btn-square btn-primary mx-1\"><i class=\"bi bi-trash\"></button></form></td>
             </tr>  
               ";
           
@@ -156,7 +156,7 @@
            
             echo "
             </table>
-            <form method=\"post\" id='purchaseForm'><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup\" style=\"width:150px; top:4px;\" href='menu.php'>Purchase</button></form>
+            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup\" style=\"width:150px; top:4px;\" href='menu.php'>Purchase</button></form>
             </div>
           </div>";
 
@@ -178,13 +178,19 @@
             echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/cart.php\");</script>");
             //echo("<script>location.reload</script>");
             
-          }else if(isset($_POST['purchaseButton'])) {  
+          }
+          if(isset($_POST['purchaseButton'])) {  
             //for this to work we have to iterate through table to add items
             
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
               $stockUp = $pdo->query("update inventory set stock = stock-{$row['quantity']} where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");
               $removeCartTable = $pdo->query("delete from cart where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");              
             }
+           // If no cuisine is selected, show all meals
+           $query = "SELECT * FROM cart_view where user_ID=501";
+          
+           // Run a query against the database
+           $result = $pdo->query($query);
            
             echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/cart.php\");</script>");
             
