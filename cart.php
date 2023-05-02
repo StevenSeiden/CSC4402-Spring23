@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
-
+    
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
 
@@ -45,9 +45,9 @@
   </head>
 
   <body>
-  
+     
       <!-- Spinner Start -->
-      <!-- <div
+      <div
         id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
       >
@@ -58,7 +58,7 @@
         >
           <span class="sr-only">Loading...</span>
         </div>
-      </div> -->
+      </div>
       <!-- Spinner End -->
 
       <!-- Navbar & Hero Start -->
@@ -85,7 +85,7 @@
             <div class="navbar-nav ms-auto py-0 pe-4">
             <?php echo '<a href="index.php#home" class="nav-item nav-link">Home</a>';?>
             <?php echo '<a href="index.php#about" class="nav-item nav-link">About Us</a>';?>
-            <?php echo '<a href="menu.php#about" class="nav-item nav-link">Menu</a>';?>
+            <?php echo '<a href="menu.php" class="nav-item nav-link">Menu</a>';?>
             <a href="#cart" class="nav-item nav-link">Cart</a>
               <?php echo '<a href="index.php#team" class="nav-item nav-link">Our Team</a>';?>
             </div>
@@ -95,8 +95,7 @@
 
 <div class="container-xxl py-5 menuBg" id="cart">
 <br>
-<br>
-<br>
+
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h5
@@ -106,8 +105,6 @@
             </h5>
             <h1 class="mb-5">All Items</h1>
           </div>
-          
-
 
         <?php
           // Create a PDO object
@@ -120,7 +117,6 @@
           
           // If no cuisine is selected, show all meals
           $query = "SELECT * FROM cart_view where user_ID=501";
-         
           // Run a query against the database
           $result = $pdo->query($query);
           echo "<div class=\"tab-content\">
@@ -128,9 +124,10 @@
             <div class=\"row g-4\">";
         if ($result->rowCount() == 0) {
             
-            echo "<br><h1>No results found</h1>";
+            echo "<br><h4 class='text-center wow fadeInUp'>No results found</h4>";
             } else {
-          echo "<table class=\"table\">
+          echo "<table class=\"table wow fadeInUp\" style\"max-width:70%\">
+          
           <tr>
           <thead style=\"background-color:#0F172B\">
             <th>Title</th>
@@ -150,7 +147,7 @@
               <td>\${$row['price']}</td>
               <td>{$row['quantity']}</td>
               <td>\${$row['total_price']}</td>
-              <td><form method=\"post\"><button name=\"removeCart\" value=\"{$row['title']}\" type=\"submit\"  class=\"btn btn-square btn-primary mx-1\" href=''><i class=\"bi bi-trash\"></button></form></td>
+              <td><form method=\"post\" id='delForm'><button name=\"removeCart\" value=\"{$row['title']}\" type=\"submit\"  class=\"btn btn-square btn-primary mx-1\"><i class=\"bi bi-trash\"></button></form></td>
             </tr>  
               ";
           
@@ -159,48 +156,56 @@
            
             echo "
             </table>
-            <form method=\"post\"><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" onclick = \"locationreload()\">Purchase</button></form>
+            <form method=\"post\" id='purchaseForm'><button name=\"purchaseButton\" type=\"submit\" class=\"btn btn-primary btn-sm wow fadeup\" style=\"width:150px; top:4px;\" href='menu.php'>Purchase</button></form>
             </div>
           </div>";
 
           }
-          
+        
           if(isset($_POST['removeCart'])) {  
-            
+           
             $valueRemove = $_POST['removeCart'];
             $removeCartTable = $pdo->query("delete from cart where (select distinct meal_ID from items where title like \"$valueRemove\") = meal_ID;");
             
-            //$stockUp;
-          }
-          if(isset($_POST['purchaseButton'])) {  
+            // If no cuisine is selected, show all meals
+            $query = "SELECT * FROM cart_view where user_ID=501";
+          
+            // Run a query against the database
+            $result = $pdo->query($query);
+            //$_POST = array();
+            
+            //echo("<script>document.getElementById('delForm').reset();</script>");
+            echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/cart.php\");</script>");
+            //echo("<script>location.reload</script>");
+            
+          }else if(isset($_POST['purchaseButton'])) {  
             //for this to work we have to iterate through table to add items
             
-            $query2 = "SELECT * FROM cart_view where user_ID=501";
-            $result2 = $pdo->query($query2);
-            while ($row = $result2->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
               $stockUp = $pdo->query("update inventory set stock = stock-{$row['quantity']} where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");
               $removeCartTable = $pdo->query("delete from cart where (select distinct meal_ID from items where title like \"{$row['title']}\") = meal_ID;");              
             }
+           
+            echo("<script>window.location.replace(\"https://bytesabroad.azurewebsites.net/cart.php\");</script>");
             
           }
-          
+         
           $pdo = null;
           // Close the PDO connection  
           ?>
         </div>
+
       </div>
       <script>
-        function locationreload() {
-                location.reload();
-                 
-        }
+      // When the user clicks on <div>, open the popup
+      function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+      }
       </script>
+      
  <!-- Footer Start -->
- </div>
- <br>
- <br>
- <br>
- <br>
+
  <br>
  <div
         class="container-fluid bg-dark text-light footer wow fadeIn"
@@ -267,7 +272,7 @@
         </div>
       </div>
       <!-- Footer End -->
-   
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

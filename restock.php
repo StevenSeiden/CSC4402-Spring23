@@ -126,21 +126,13 @@
             <div class=\"row g-4\">";
           
           if ($result->rowCount() == 0) {
-            echo "<br><h1>No results found</h1>";
+            echo "<br><h5 class='text-center wow fadeup'>No results found</h5>";
           }
           else{
             displayInventory($result);
           }
           
-          if(isset($_POST['incrementInventory'])) {  
-            $updatedMeal = $_POST['incrementInventory'];
-            $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock + 1 WHERE \"$updatedMeal\" = meal_ID;");
-          }
-          else if(isset($_POST['decrementInventory'])) {  
-            $updatedMeal = $_POST['decrementInventory'];
-            $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock - 1 WHERE \"$updatedMeal\" = meal_ID;");
-          }
-
+        
           function displayInventory($result){
             echo "<table class=\"table\">
             <tr>
@@ -177,6 +169,19 @@
               </div>
             </div>";
           }
+          if(isset($_POST['incrementInventory'])) {  
+            $updatedMeal = $_POST['incrementInventory'];
+            $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock + 1 WHERE \"$updatedMeal\" = meal_ID;");
+            $_POST['incrementInventory'] = null;
+            echo("<script>location.reload</script>");
+          }
+          else if(isset($_POST['decrementInventory'])) {  
+            $updatedMeal = $_POST['decrementInventory'];
+            $updatedStockTable = $pdo->query("UPDATE inventory SET stock = stock - 1 WHERE \"$updatedMeal\" = meal_ID;");
+            $_POST['decrementInventory'] = null;
+            echo("<script>location.reload</script>");
+          }
+
 
           $pdo = null;
           // Close the PDO connection

@@ -45,7 +45,7 @@
   </head>
 
   <body>
-   
+  <div class="container-xxl p-0">
       <!-- Spinner Start -->
       <!-- <div
         id="spinner"
@@ -105,7 +105,7 @@
             <h1 class="mb-5">All Menu Items</h1>
           </div>
         
-          <form method="get" style="margin: 0 auto !important; text-align: center;"> <!-- dropdown list of cuisines -->
+          <form class='wow fadeInUp' method="get" style="margin: 0 auto !important; text-align: center;"> <!-- dropdown list of cuisines -->
           <label for="cuisineType">Cuisine: </label>
           <select id="cuisineType" name="cuisineType" style="width: 150px">
             <option value="All">All</option>
@@ -128,7 +128,7 @@
             <button class="btn btn-primary btn-sm" type="submit" href="#menu">Filter</button>
           </form>
 
-          <form method="get" style="margin: 0 auto !important; margin-top: 10px  !important; text-align: center;" > <!-- dropdown list of diets -->
+          <form class='wow fadeInUp' method="get" style="margin: 0 auto !important; margin-top: 10px  !important; text-align: center;" > <!-- dropdown list of diets -->
           <label for="dietaryType">Diet:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
           <select id="dietaryType" name="dietaryType" style="width: 150px">
             <option value="All">All</option>
@@ -147,7 +147,7 @@
             <button class="btn btn-primary btn-sm" type="submit" href="#menu">Filter</button>
           </form>
           <br>
-          <h5 class="d-flex justify-content-between border-bottom pb-2\"></h5>
+          <h5 class="d-flex wow fadeInUp justify-content-between border-bottom pb-2\"></h5>
         
         <br>
 
@@ -185,18 +185,18 @@
 
           // Run a query against the database
           $result = $pdo->query($query);
-          echo "<div class=\"tab-content\">
+          echo "<div class=\"tab-content \">
           <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
             <div class=\"row g-4\">";
         if ($result->rowCount() == 0) {
             
-            echo "<br><h1>No results found</h1>";
+            echo "<br><h5 class='text-center wow fadeInUp'>No results found</h5>";
             } else {
           while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
             echo "
-            <div class=\"col-lg-6\">
-            <div class=\"d-flex align-items-center\">
+            <div class=\"col-lg-6\" >
+            <div class=\"d-flex align-items-center wow fadeInUp\" >
               <img
                 class=\"flex-shrink-0 img-fluid rounded\"
                 src=\"img/mealsFromDB/{$row['title']}.jpg\"
@@ -210,18 +210,19 @@
                   <span>{$row['title']}</span>
                   <span class=\"text-primary\">\${$row['price']}</span>
                 </h5>
-                <small class=\"fst-italic\">{$row['description']}</small>
                 <br>
+                <small class=\"fst-italic\">{$row['description']}</small>
                 <small><strong>Cuisine:</strong> {$row['cuisine']}</small>
                 <small><strong>Diet:</strong> {$row['dietary']}\t </small>
-                <small><strong>Available:</strong> {$row['stock']} meals</small>
-                <br>
+                
+                
                 ";
             if($row['stock']>0){
-              echo "<form method=\"post\"><button value=\"{$row['title']}\" name=\"stockButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\" href=''>Add to cart</button></form>";
+              
+              echo "<small><strong>Available:</strong> {$row['stock']} meals</small><br> <form method=\"post\"><button value=\"{$row['title']}\" name=\"stockButton\" type=\"submit\" class=\"btn btn-primary btn-sm\" style=\"width:150px; top:4px;\">Add to cart</button></form>";
             }else{
-              echo "<div class=\"alert alert-warning\">
-              <strong>Out of Stock</strong>
+              echo "<br><div class=\"alert alert-warning\" style=\"width:130px;padding-top:4px;height:30px\">
+             <strong>Out of Stock</strong>
             </div>";
             }
             echo "
@@ -231,7 +232,7 @@
 
           }}
           if(isset($_POST['stockButton'])) {  
-            
+           
             $value = $_POST['stockButton'];
             $temp = $pdo->query("Select Distinct meal_ID FROM items WHERE title like \"$value\"");
             $value2 = $temp->fetch(PDO::FETCH_ASSOC);
@@ -253,6 +254,8 @@
               echo("Unable to Add $value to Cart due to lack of stock");
       
             }
+            $_POST['stockButton'] = null;
+            echo("<script>location.reload</script>");
           }
            $pdo = null;
           // Close the PDO connection  
@@ -262,10 +265,13 @@
       </div>
           <br>
           <br>
+     
+      
  <!-- Footer Start -->
  <div
         class="container-fluid bg-dark text-light footer wow fadeIn"
         data-wow-delay="0.1s"
+        style="width:100%"
       >
         <div class="container py-5" style="background-color:rgba(0,0,0,0);">
           <div class="row g-5">
@@ -328,7 +334,7 @@
         </div>
       </div>
       <!-- Footer End -->
-   
+        </div>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
