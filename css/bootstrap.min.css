@@ -67,8 +67,7 @@ body::-webkit-scrollbar {
     body {
         background-color: #666565;
         color: #F1F8FF;
-        width: 100% !important;
-    }
+            }
 
     .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
         width: 100%;
@@ -630,8 +629,6 @@ progress {
     width: 100%;
     padding-right: var(--bs-gutter-x, .75rem);
     padding-left: var(--bs-gutter-x, .75rem);
-    padding-right: 10px;
-    padding-left: 10px;
 }
 /* 
 @media (min-width: 576px) {
