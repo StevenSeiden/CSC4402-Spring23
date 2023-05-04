@@ -191,7 +191,7 @@
                   <img
                     class="img-fluid rounded w-100 wow zoomIn"
                     data-wow-delay="0.1s"
-                    src="img/mealsFromDB/Mediterranean Salad.jpeg"
+                    src="img/mealsFromDB/Mediterranean Salad.jpg"
                   />
                 </div>
                 <div class="col-6 text-start">
