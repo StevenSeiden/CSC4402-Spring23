@@ -1,4 +1,4 @@
-<h1 style="align:center"> International Restaurant DBMS Project Abstract <br> CSC4402-Spring23</h1>
+<h1 style="align:center"> Bytes Abroad Project Abstract <br> CSC4402-Spring23</h1>
 
 <p> Our project is an ‘Around the World’ themed restaurant using a Database Management System (DBMS) that will help simplify and streamline the manager’s inventory management and have a centralized place for customer interactions with the application. This DBMS is a web-based application, created primarily using PHP (with Bootstrap) and mySQL, that has a home, menu, cart, and restock page. While there are other DBMS that can maintain inventory, our DBMS can update inventory in real time when items are out of stock or if a customer adds the last available item to their cart.
 </p>
